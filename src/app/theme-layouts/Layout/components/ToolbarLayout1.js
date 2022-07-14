@@ -45,46 +45,45 @@ function ToolbarLayout1(props) {
             {config.navbar.display && config.navbar.position === "left" && (
               <>
                 <Hidden lgDown>
-                  {(config.navbar.style === "style-3" ||
-                    config.navbar.style === "style-3-dense") && (
-                    <NavbarToggleButton className="w-40 h-40 p-0 mx-0" />
-                  )}
-
                   {config.navbar.style === "style-1" && !navbar.open && (
                     <NavbarToggleButton className="w-40 h-40 p-0 mx-0" />
                   )}
+                </Hidden>{" "}
+                <Hidden lgUp>
+                  <NavbarToggleButton className="w-40 h-40 p-0 mx-0 sm:mx-8" />
                 </Hidden>
               </>
             )}
           </div>
 
           <div className="flex items-center px-8 h-full overflow-x-auto">
-            <Hidden lgUp>
+            {/* <Hidden lgUp>
               <LanguageSwitcher />
-            </Hidden>
+            </Hidden> */}
 
             <DarkModeToggle />
 
             <FullScreenToggle />
 
-            <Hidden lgUp>
+            {/* <Hidden lgUp>
               <NavigationSearch />
-            </Hidden>
+            </Hidden> */}
 
-            <Hidden lgUp>
+            {/* <Hidden lgUp>
               <AdjustFontSize />
-            </Hidden>
+            </Hidden> */}
 
-            <Hidden lgUp>
+            {/* <Hidden lgUp>
               <ChatPanelToggleButton />
-            </Hidden>
+            </Hidden> */}
 
-            <Hidden lgUp>
+            {/* <Hidden lgUp>
               <QuickPanelToggleButton />
-            </Hidden>
-            <Hidden lgUp>
+            </Hidden> */}
+
+            {/* <Hidden lgUp>
               <NotificationPanelToggleButton />
-            </Hidden>
+            </Hidden> */}
 
             <UserMenu />
           </div>
