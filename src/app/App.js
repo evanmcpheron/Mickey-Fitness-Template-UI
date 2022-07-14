@@ -19,9 +19,14 @@ import axios from "axios";
  * Axios HTTP Request defaults
  */
 
+const origin =
+  process.env.NODE_ENV === "production"
+    ? "https://api.mickeyfitness.com"
+    : "http://localhost:3000";
+
 axios.defaults.baseURL = "http://localhost:8080";
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-// axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.common["Access-Control-Allow-Origin"] = origin;
+axios.defaults.withCredentials = true;
 
 const emotionCacheOptions = {
   rtl: {

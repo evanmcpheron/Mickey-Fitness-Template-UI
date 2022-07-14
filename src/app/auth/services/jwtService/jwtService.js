@@ -25,8 +25,7 @@ class JwtService extends FuseUtils.EventEmitter {
             !err.config.__isRetryRequest
           ) {
             // if you ever get an unauthorized response, logout the user
-            this.emit("onAutoLogout", "Invalid access_token");
-            this.setSession(null);
+            this.emit("onAutoLogout", "Invalid Session");
           }
           throw err;
         });
@@ -34,26 +33,23 @@ class JwtService extends FuseUtils.EventEmitter {
     );
   };
 
-  handleAuthentication = () => {
-    const access_token = this.getAccessToken();
+  handleAuthentication = async () => {
+    const validUser = await this.getMe();
 
-    if (!access_token) {
+    if (validUser.data.error) {
       this.emit("onNoAccessToken");
 
       return;
     }
 
-    if (this.isAuthTokenValid(access_token)) {
-      this.setSession(access_token);
+    if (!validUser.data.error) {
       this.emit("onAutoLogin", true);
     } else {
-      this.setSession(null);
-      this.emit("onAutoLogout", "access_token expired");
+      this.emit("onAutoLogout", "Session expired");
     }
   };
 
   createUser = async (data) => {
-    console.log("hit");
     try {
       const response = await axios.post(
         proxy() + jwtServiceConfig.signUp,
@@ -61,12 +57,7 @@ class JwtService extends FuseUtils.EventEmitter {
       );
       this.setSession(response.data.access_token);
       this.emit("onLogin", response.data.user);
-    } catch (error) {
-      console.log(
-        "🚀 ~ file: jwtService.js ~ line 71 ~ JwtService ~ createUser= ~ error",
-        error
-      );
-    }
+    } catch (error) {}
   };
 
   signInWithEmailAndPassword = async (email, password, rememberMe) => {
@@ -77,37 +68,40 @@ class JwtService extends FuseUtils.EventEmitter {
         rememberMe,
       });
       console.log(
-        "🚀 ~ file: jwtService.js ~ line 79 ~ JwtService ~ response ~ response",
-        response
+        "🚀 ~ file: jwtService.js ~ line 73 ~ JwtService ~ response ~ response",
+        response.data.results.user
       );
-      this.setSession(response.data.results.access_token);
-      this.emit("onLogin", response.data.message);
-    } catch (error) {
-      console.log(
-        "🚀 ~ file: jwtService.js ~ line 83 ~ JwtService ~ signInWithEmailAndPassword= ~ error",
-        error
-      );
-    }
+
+      const mockResponse = {
+        uuid: "XgbuVEXBU5gtSKdbQRP1Zbbby1i1",
+        password: "admin",
+        role: "admin",
+        data: {
+          displayName: "Abbott Keitch",
+          photoURL: "assets/images/avatars/brian-hughes.jpg",
+          email: "admin@fusetheme.com",
+        },
+      };
+
+      // this.setSession(response.data.results.access_token);
+      this.emit("onLogin", response.data.results.user);
+    } catch (error) {}
   };
 
   signInWithToken = async () => {
     try {
-      const response = await axios.get(proxy() + jwtServiceConfig.me, {
-        withCredentials: true,
-      });
+      const response = await this.getMe();
       console.log(
-        "🚀 ~ file: jwtService.js ~ line 101 ~ JwtService ~ response ~ response",
-        response
+        "🚀 ~ file: jwtService.js ~ line 82 ~ JwtService ~ signInWithToken= ~ response",
+        response.data.results
       );
-
-      if (response.data.user) {
-        this.setSession(response.data.access_token);
-      }
+      this.emit("onLogin", response.data.results);
     } catch (error) {
       console.log(
         "🚀 ~ file: jwtService.js ~ line 106 ~ JwtService ~ signInWithToken= ~ error",
         error
       );
+      this.emit("onLogout", "Logged out");
       // this.logout();
     }
   };
@@ -119,10 +113,6 @@ class JwtService extends FuseUtils.EventEmitter {
   };
 
   setSession = (access_token) => {
-    console.log(
-      "🚀 ~ file: jwtService.js ~ line 131 ~ JwtService ~ access_token",
-      access_token
-    );
     if (access_token) {
       localStorage.setItem("jwt_access_token", access_token);
       axios.defaults.headers.common.Authorization = `${access_token}`;
@@ -132,36 +122,27 @@ class JwtService extends FuseUtils.EventEmitter {
     }
   };
 
-  logout = () => {
-    this.setSession(null);
+  logout = async () => {
+    try {
+      await axios.post(proxy() + jwtServiceConfig.signOut);
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: jwtService.js ~ line 119 ~ JwtService ~ logout= ~ error",
+        error
+      );
+    }
     this.emit("onLogout", "Logged out");
-  };
-
-  isAuthTokenValid = (access_token) => {
-    console.log(
-      "🚀 ~ file: jwtService.js ~ line 139 ~ JwtService ~ access_token",
-      access_token
-    );
-    if (!access_token) {
-      return false;
-    }
-    const decoded = jwtDecode(access_token);
-    const currentTime = Date.now() / 1000;
-    if (decoded.exp < currentTime) {
-      console.warn("access token expired");
-      return false;
-    }
-
-    return true;
   };
 
   getMe = async () => {
     try {
-    } catch (error) {}
-  };
-
-  getAccessToken = () => {
-    return window.localStorage.getItem("jwt_access_token");
+      return await axios.get(proxy() + jwtServiceConfig.me);
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: jwtService.js ~ line 162 ~ JwtService ~ getMe= ~ error",
+        error
+      );
+    }
   };
 }
 
