@@ -15,8 +15,6 @@ function AuthProvider({ children }) {
 
   useEffect(() => {
     jwtService.on("onAutoLogin", () => {
-      dispatch(showMessage({ message: "Signing in with JWT" }));
-
       /**
        * Sign in and retrieve user data with stored token
        */

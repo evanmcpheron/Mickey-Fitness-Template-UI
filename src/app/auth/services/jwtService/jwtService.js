@@ -1,6 +1,5 @@
 import FuseUtils from "@fuse/utils/FuseUtils";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
 import { get } from "lodash";
 import { proxy } from "src/app/helper/proxy";
 import jwtServiceConfig from "./jwtServiceConfig";
