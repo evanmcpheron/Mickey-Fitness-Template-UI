@@ -31,17 +31,25 @@ function AuthProvider({ children }) {
     });
 
     jwtService.on("onLogin", (user) => {
-      success(user, "Signed in");
+      console.log(
+        "🚀 ~ file: AuthContext.js ~ line 34 ~ jwtService.on ~ user",
+        user
+      );
+      success(user);
+    });
+
+    jwtService.on("onLoginError", (message) => {
+      pass(message, "error");
     });
 
     jwtService.on("onLogout", () => {
-      pass("Signed out");
+      pass();
 
       dispatch(logoutUser());
     });
 
     jwtService.on("onAutoLogout", (message) => {
-      pass(message);
+      pass();
 
       dispatch(logoutUser());
     });
@@ -52,9 +60,9 @@ function AuthProvider({ children }) {
 
     jwtService.init();
 
-    function success(user, message) {
+    function success(user, message, variant = "success") {
       if (message) {
-        dispatch(showMessage({ message }));
+        dispatch(showMessage({ message, variant }));
       }
 
       Promise.all([
@@ -66,9 +74,9 @@ function AuthProvider({ children }) {
       });
     }
 
-    function pass(message) {
+    function pass(message, variant = "info") {
       if (message) {
-        dispatch(showMessage({ message }));
+        dispatch(showMessage({ message, variant }));
       }
 
       setWaitAuthCheck(false);

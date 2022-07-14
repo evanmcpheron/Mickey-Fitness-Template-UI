@@ -13,9 +13,9 @@ export const setUser = createAsyncThunk(
     /*
     You can redirect the logged-in user to a specific route depending on his role
     */
-    // if (user.loginRedirectUrl) {
-    settingsConfig.loginRedirectUrl = "user.loginRedirectUrl"; // for example 'apps/academy'
-    // }
+    if (user.loginRedirectUrl) {
+      settingsConfig.loginRedirectUrl = user.loginRedirectUrl; // for example 'apps/academy'
+    }
 
     return user;
   }
@@ -87,9 +87,9 @@ export const updateUserData = (user) => async (dispatch, getState) => {
 const initialState = {
   role: [], // guest
   data: {
-    displayName: "John Doe",
+    displayName: "Guest",
     photoURL: "assets/images/avatars/brian-hughes.jpg",
-    email: "johndoe@withinpixels.com",
+    email: "",
     shortcuts: ["apps.calendar", "apps.mailbox", "apps.contacts", "apps.tasks"],
   },
 };

@@ -46,13 +46,13 @@ function SignInPage() {
 
   const { isValid, dirtyFields, errors } = formState;
 
-  useEffect(() => {
-    setValue("asdf@asdf.com", "asdf@asdf.com", {
-      shouldDirty: true,
-      shouldValidate: true,
-    });
-    setValue("password", "admin", { shouldDirty: true, shouldValidate: true });
-  }, [setValue]);
+  // useEffect(() => {
+  //   setValue("", "", {
+  //     shouldDirty: true,
+  //     shouldValidate: true,
+  //   });
+  //   setValue("password", "admin", { shouldDirty: true, shouldValidate: true });
+  // }, [setValue]);
 
   function onSubmit({ email, password, rememberMe }) {
     jwtService
