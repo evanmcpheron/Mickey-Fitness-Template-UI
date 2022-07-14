@@ -8,7 +8,7 @@ import jwtService from "./services/jwtService";
 
 const AuthContext = React.createContext();
 
-function AuthProvider({ children }) {
+const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(undefined);
   const [waitAuthCheck, setWaitAuthCheck] = useState(true);
   const dispatch = useDispatch();
@@ -29,10 +29,6 @@ function AuthProvider({ children }) {
     });
 
     jwtService.on("onLogin", (user) => {
-      console.log(
-        "🚀 ~ file: AuthContext.js ~ line 34 ~ jwtService.on ~ user",
-        user
-      );
       success(user);
     });
 
@@ -58,7 +54,7 @@ function AuthProvider({ children }) {
 
     jwtService.init();
 
-    function success(user, message, variant = "success") {
+    const success = (user, message, variant = "success") => {
       if (message) {
         dispatch(showMessage({ message, variant }));
       }
@@ -70,16 +66,16 @@ function AuthProvider({ children }) {
         setWaitAuthCheck(false);
         setIsAuthenticated(true);
       });
-    }
+    };
 
-    function pass(message, variant = "info") {
+    const pass = (message, variant = "info") => {
       if (message) {
         dispatch(showMessage({ message, variant }));
       }
 
       setWaitAuthCheck(false);
       setIsAuthenticated(false);
-    }
+    };
   }, [dispatch]);
 
   return waitAuthCheck ? (
@@ -89,14 +85,14 @@ function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
-function useAuth() {
+const useAuth = () => {
   const context = React.useContext(AuthContext);
   if (context === undefined) {
     throw new Error("useAuth must be used within a AuthProvider");
   }
   return context;
-}
+};
 
 export { AuthProvider, useAuth };

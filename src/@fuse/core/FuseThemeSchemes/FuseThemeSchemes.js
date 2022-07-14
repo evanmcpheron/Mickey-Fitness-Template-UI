@@ -1,25 +1,17 @@
 import { memo, useState } from "react";
 import { LightMode, DarkMode } from "@mui/icons-material";
-import { Icon, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 
-function SchemePreview({ theme, onSelect }) {
-  console.log(
-    "🚀 ~ file: FuseThemeSchemes.js ~ line 7 ~ SchemePreview ~ onSelect",
-    theme
-  );
+const SchemePreview = ({ theme, onSelect }) => {
   return (
     <IconButton onClick={() => onSelect(theme)} type="button">
       {theme.palette.mode === "light" ? <LightMode /> : <DarkMode />}
     </IconButton>
   );
-}
+};
 
-function FuseThemeSchemes(props) {
+const FuseThemeSchemes = (props) => {
   const [mode, setMode] = useState(localStorage.getItem("mode"));
-  console.log(
-    "🚀 ~ file: FuseThemeSchemes.js ~ line 18 ~ FuseThemeSchemes ~ mode",
-    mode
-  );
 
   const { themes } = props;
 
@@ -40,6 +32,6 @@ function FuseThemeSchemes(props) {
       onSelect={() => props?.onSelect(modeChange())}
     />
   );
-}
+};
 
 export default memo(FuseThemeSchemes);
