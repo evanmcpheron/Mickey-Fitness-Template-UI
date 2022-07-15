@@ -63,7 +63,9 @@ function ToolbarLayout1(props) {
 
             <DarkModeToggle />
 
-            <FullScreenToggle />
+            <Hidden lgDown>
+              <FullScreenToggle />
+            </Hidden>
 
             {/* <Hidden lgUp>
               <NavigationSearch />
