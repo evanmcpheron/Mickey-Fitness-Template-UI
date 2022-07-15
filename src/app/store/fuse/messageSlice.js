@@ -17,11 +17,16 @@ const messageSlice = createSlice({
   initialState,
   reducers: {
     showMessage: (state, action) => {
+      if (action.payload.variiant === null) return;
       state.state = true;
       state.options = {
         ...initialState.options,
         ...action.payload,
       };
+      console.log(
+        "🚀 ~ file: messageSlice.js ~ line 24 ~ state.options",
+        state.options
+      );
     },
     hideMessage: (state, action) => {
       state.state = null;

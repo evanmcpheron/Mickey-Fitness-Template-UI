@@ -30,14 +30,11 @@ export const changeFuseTheme = (theme) => (dispatch, getState) => {
       footer: theme,
     },
   };
-  console.log(
-    "🚀 ~ file: settingsSlice.js ~ line 26 ~ changeFuseTheme ~ newSettings",
-    newSettings
-  );
+
   dispatch(setDefaultSettings(newSettings));
 };
 
-function getInitialSettings() {
+const getInitialSettings = () => {
   const defaultLayoutStyle =
     settingsConfig.layout && settingsConfig.layout.style
       ? settingsConfig.layout.style
@@ -53,9 +50,9 @@ function getInitialSettings() {
     settingsConfig,
     getParsedQuerySettings()
   );
-}
+};
 
-export function generateSettings(_defaultSettings, _newSettings) {
+export const generateSettings = (_defaultSettings, _newSettings) => {
   const response = _.merge(
     {},
     _defaultSettings,
@@ -68,7 +65,7 @@ export function generateSettings(_defaultSettings, _newSettings) {
   );
 
   return response;
-}
+};
 
 const initialSettings = getInitialSettings();
 

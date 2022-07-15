@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
           success(user);
         })
         .catch((error) => {
-          pass(error.message);
+          console.error(error);
         });
     });
 
@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
     });
 
     jwtService.on("onLoginError", (message) => {
-      pass(message, "error");
+      pass(message, null);
     });
 
     jwtService.on("onLogout", () => {
@@ -69,6 +69,9 @@ const AuthProvider = ({ children }) => {
     };
 
     const pass = (message, variant = "info") => {
+      if (message === "Request failed with status code 404") {
+        return;
+      }
       if (message) {
         dispatch(showMessage({ message, variant }));
       }

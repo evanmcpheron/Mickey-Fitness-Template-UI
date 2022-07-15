@@ -86,10 +86,6 @@ class JwtService extends FuseUtils.EventEmitter {
         password,
         rememberMe,
       });
-      console.log(
-        "🚀 ~ file: jwtService.js ~ line 73 ~ JwtService ~ response ~ response",
-        response.data.results.user
-      );
 
       this.emit("onLogin", response.data.results.user);
     } catch (error) {
