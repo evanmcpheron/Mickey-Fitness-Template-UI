@@ -7,7 +7,7 @@ import Error404Page from "../pages/404/Error404Page";
 import ExampleConfig from "../pages/example/ExampleConfig";
 import SignInConfig from "../pages/sign-in/SignInConfig";
 import SignUpConfig from "../pages/sign-up/SignUpConfig";
-import HomeConfig from "../pages/home/HomeConfig";
+import HomeConfig from "../pages/Home/HomeConfig";
 import ForgotPasswordConfig from "../pages/forgotPassword/ForgotPasswordConfig";
 
 const routeConfigs = [
