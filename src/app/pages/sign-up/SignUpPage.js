@@ -74,7 +74,8 @@ const SignUpPage = () => {
         email,
       })
       .then((user) => {
-        // No need to do anything, registered user data will be set at app/auth/AuthContext
+        console.log(user);
+        return <Navigate to={"/"} />;
       })
       .catch((_errors) => {
         _errors.forEach((error) => {

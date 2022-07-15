@@ -5,11 +5,17 @@ import settingsConfig from "app/configs/settingsConfig";
 import SignOutConfig from "../pages/sign-out/SignOutConfig";
 import Error404Page from "../pages/404/Error404Page";
 import ExampleConfig from "../pages/example/ExampleConfig";
-import SignInPage from "../pages/sign-in/SignInPage";
-import Home from "../pages/Home/Home";
-import SignUpPage from "../pages/sign-up/SignUpPage";
+import SignInConfig from "../pages/sign-in/SignInConfig";
+import SignUpConfig from "../pages/sign-up/SignUpConfig";
+import HomeConfig from "../pages/Home/HomeConfig";
 
-const routeConfigs = [ExampleConfig, SignOutConfig];
+const routeConfigs = [
+  ExampleConfig,
+  SignOutConfig,
+  SignInConfig,
+  SignUpConfig,
+  HomeConfig,
+];
 
 const routes = [
   ...FuseUtils.generateRoutesFromConfigs(
@@ -18,7 +24,7 @@ const routes = [
   ),
   {
     path: "",
-    element: <Home />,
+    element: <FuseLoading />,
   },
   {
     path: "test",
@@ -31,11 +37,11 @@ const routes = [
   },
   {
     path: "sign-in",
-    element: <SignInPage />,
+    element: <FuseLoading />,
   },
   {
     path: "sign-up",
-    element: <SignUpPage />,
+    element: <FuseLoading />,
   },
   {
     path: "404",

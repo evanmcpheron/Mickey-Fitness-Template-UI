@@ -17,7 +17,7 @@ const HomeConfig = {
   },
   routes: [
     {
-      path: "/",
+      path: "",
       element: <Home />,
     },
   ],
