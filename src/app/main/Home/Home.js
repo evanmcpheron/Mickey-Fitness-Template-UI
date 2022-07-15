@@ -16,7 +16,7 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   "& .FusePageSimple-sidebarContent": {},
 }));
 
-const ExamplePage = (props) => {
+function HomePage(props) {
   const { t } = useTranslation("examplePage");
 
   return (
@@ -36,6 +36,6 @@ const ExamplePage = (props) => {
       scroll="content"
     />
   );
-};
+}
 
-export default ExamplePage;
+export default HomePage;
