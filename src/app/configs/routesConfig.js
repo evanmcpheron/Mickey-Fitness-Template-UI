@@ -7,7 +7,8 @@ import Error404Page from "../pages/404/Error404Page";
 import ExampleConfig from "../pages/example/ExampleConfig";
 import SignInConfig from "../pages/sign-in/SignInConfig";
 import SignUpConfig from "../pages/sign-up/SignUpConfig";
-import HomeConfig from "../pages/Home/HomeConfig";
+import HomeConfig from "../pages/home/HomeConfig";
+import ForgotPasswordConfig from "../pages/forgotPassword/ForgotPasswordConfig";
 
 const routeConfigs = [
   ExampleConfig,
@@ -15,6 +16,7 @@ const routeConfigs = [
   SignInConfig,
   SignUpConfig,
   HomeConfig,
+  ForgotPasswordConfig,
 ];
 
 const routes = [
@@ -41,6 +43,10 @@ const routes = [
   },
   {
     path: "sign-up",
+    element: <FuseLoading />,
+  },
+  {
+    path: "forgot-password",
     element: <FuseLoading />,
   },
   {
