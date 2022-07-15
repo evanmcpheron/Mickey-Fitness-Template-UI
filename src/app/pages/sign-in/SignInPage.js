@@ -1,4 +1,4 @@
-import SignInPageContent from "../sign-in/SignInPageContent";
+import SignInPageContent from "./SignInPageContent";
 
 function SignInPage() {
   return <SignInPageContent />;

@@ -36,11 +36,11 @@ const settingsConfig = {
         : themesConfig.dark,
   },
   /*
-   To make whole app auth protected by default set defaultAuth:['admin','staff','user']
+   To make whole app auth protected by default set defaultAuth:['admin','staff','user'] IMPORTANT
    To make whole app accessible without authorization by default set defaultAuth: null
    *** The individual route configs which has auth option won't be overridden.
    */
-  defaultAuth: ["admin"],
+  defaultAuth: null,
   /*
     Default redirect url for the logged-in user,
    */

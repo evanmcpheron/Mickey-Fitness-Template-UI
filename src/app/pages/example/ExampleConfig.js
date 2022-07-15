@@ -1,13 +1,14 @@
-import i18next from 'i18next';
+import i18next from "i18next";
+import { authRoles } from "src/app/auth";
 
-import en from './i18n/en';
-import tr from './i18n/tr';
-import ar from './i18n/ar';
-import Example from './Example';
+import en from "./i18n/en";
+import tr from "./i18n/tr";
+import ar from "./i18n/ar";
+import Example from "./Example";
 
-i18next.addResourceBundle('en', 'examplePage', en);
-i18next.addResourceBundle('tr', 'examplePage', tr);
-i18next.addResourceBundle('ar', 'examplePage', ar);
+i18next.addResourceBundle("en", "examplePage", en);
+i18next.addResourceBundle("tr", "examplePage", tr);
+i18next.addResourceBundle("ar", "examplePage", ar);
 
 const ExampleConfig = {
   settings: {
@@ -15,9 +16,10 @@ const ExampleConfig = {
       config: {},
     },
   },
+  auth: authRoles.staff, // ['admin','staff']
   routes: [
     {
-      path: 'example',
+      path: "example",
       element: <Example />,
     },
   ],
