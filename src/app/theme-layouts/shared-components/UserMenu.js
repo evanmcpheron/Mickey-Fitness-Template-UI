@@ -11,6 +11,7 @@ import { Link, NavLink } from "react-router-dom";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import { selectUser } from "app/store/userSlice";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 
 function UserMenu(props) {
   const user = useSelector(selectUser);
@@ -78,7 +79,7 @@ function UserMenu(props) {
           <>
             <MenuItem component={Link} to="/sign-in" role="button">
               <ListItemIcon className="min-w-40">
-                <FuseSvgIcon>heroicons-outline:lock-closed</FuseSvgIcon>
+                <LockOpenOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary="Sign In" />
             </MenuItem>

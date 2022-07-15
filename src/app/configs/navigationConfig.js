@@ -3,6 +3,8 @@ import { authRoles } from "../auth";
 import ar from "./navigation-i18n/ar";
 import en from "./navigation-i18n/en";
 import tr from "./navigation-i18n/tr";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 
 i18next.addResourceBundle("en", "navigation", en);
 i18next.addResourceBundle("tr", "navigation", tr);
@@ -32,7 +34,7 @@ const navigationConfig = [
     translate: "SIGN IN",
     auth: authRoles.onlyGuest,
     type: "item",
-    icon: "heroicons-outline:star",
+    icon: "heroicons-outline:lock-open",
     url: "sign-in",
   },
   {
@@ -41,7 +43,7 @@ const navigationConfig = [
     translate: "SIGN UP",
     auth: authRoles.onlyGuest,
     type: "item",
-    icon: "heroicons-outline:star",
+    icon: "heroicons-outline:user-add",
     url: "sign-up",
   },
 ];
