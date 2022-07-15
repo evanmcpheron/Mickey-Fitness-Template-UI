@@ -1,4 +1,5 @@
 import i18next from "i18next";
+import JwtService from "../auth/services/jwtService";
 import ar from "./navigation-i18n/ar";
 import en from "./navigation-i18n/en";
 import tr from "./navigation-i18n/tr";
@@ -10,7 +11,7 @@ i18next.addResourceBundle("ar", "navigation", ar);
 const navigationConfig = [
   {
     id: "home-component",
-    title: "Home",
+    title: "HOME",
     translate: "HOME",
     type: "item",
     icon: "heroicons-outline:star",
@@ -18,19 +19,11 @@ const navigationConfig = [
   },
   {
     id: "example-component",
-    title: "Example",
+    title: "EXAMPLE",
     translate: "EXAMPLE",
     type: "item",
     icon: "heroicons-outline:star",
     url: "example",
-  },
-  {
-    id: "signin-component",
-    title: "Signin",
-    translate: "SIGN IN",
-    type: "item",
-    icon: "heroicons-outline:star",
-    url: "sign-in",
   },
 ];
 

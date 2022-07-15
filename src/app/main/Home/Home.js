@@ -1,7 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import FusePageSimple from "@fuse/core/FusePageSimple";
-import DemoContent from "@fuse/core/DemoContent";
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   "& .FusePageSimple-header": {
@@ -26,13 +25,7 @@ function HomePage(props) {
           <h4>{t("TITLE")}</h4>
         </div>
       }
-      content={
-        <div className="p-24">
-          <h4>Content</h4>
-          <br />
-          <DemoContent />
-        </div>
-      }
+      content={<div className="p-24">HOME</div>}
       scroll="content"
     />
   );

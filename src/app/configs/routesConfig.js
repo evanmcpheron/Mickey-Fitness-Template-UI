@@ -2,20 +2,14 @@ import FuseUtils from "@fuse/utils";
 import FuseLoading from "@fuse/core/FuseLoading";
 import { Navigate } from "react-router-dom";
 import settingsConfig from "app/configs/settingsConfig";
-import SignInConfig from "../main/sign-in/SignInConfig";
-import SignUpConfig from "../main/sign-up/SignUpConfig";
 import SignOutConfig from "../main/sign-out/SignOutConfig";
 import Error404Page from "../main/404/Error404Page";
 import ExampleConfig from "../main/example/ExampleConfig";
-import HomeConfig from "../main/Home/HomeConfig";
+import SignInPage from "../main/sign-in/SignInPage";
+import Home from "../main/Home/Home";
+import SignUpPage from "../main/sign-up/SignUpPage";
 
-const routeConfigs = [
-  ExampleConfig,
-  SignOutConfig,
-  SignInConfig,
-  SignUpConfig,
-  HomeConfig,
-];
+const routeConfigs = [ExampleConfig, SignOutConfig];
 
 const routes = [
   ...FuseUtils.generateRoutesFromConfigs(
@@ -23,11 +17,11 @@ const routes = [
     settingsConfig.defaultAuth
   ),
   {
-    path: "/",
-    element: <FuseLoading />,
+    path: "",
+    element: <Home />,
   },
   {
-    path: "/test",
+    path: "test",
     element: <Navigate to="/example" />,
     auth: settingsConfig.defaultAuth,
   },
@@ -36,8 +30,12 @@ const routes = [
     element: <FuseLoading />,
   },
   {
-    path: "signin",
-    element: <FuseLoading />,
+    path: "sign-in",
+    element: <SignInPage />,
+  },
+  {
+    path: "sign-up",
+    element: <SignUpPage />,
   },
   {
     path: "404",

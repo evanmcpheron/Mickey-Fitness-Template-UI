@@ -86,11 +86,11 @@ export const updateUserData = (user) => async (dispatch, getState) => {
 
 const initialState = {
   role: [], // guest
+  uuid: "",
   data: {
     displayName: "Guest",
     photoURL: "assets/images/avatars/brian-hughes.jpg",
     email: "",
-    shortcuts: ["apps.calendar", "apps.mailbox", "apps.contacts", "apps.tasks"],
   },
 };
 
