@@ -2,12 +2,14 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import { useEffect } from "react";
 import JwtService from "../../auth/services/jwtService";
+import { Navigate } from "react-router-dom";
 
 function SignOutPage() {
   useEffect(() => {
     setTimeout(() => {
       JwtService.logout();
-    }, 100);
+      return <Navigate to={"/sign-in"} />;
+    }, 1000);
   }, []);
 
   return (

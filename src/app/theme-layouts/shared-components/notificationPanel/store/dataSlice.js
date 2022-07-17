@@ -1,31 +1,44 @@
-import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import {
+  createAsyncThunk,
+  createEntityAdapter,
+  createSlice,
+} from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const getNotifications = createAsyncThunk('notificationPanel/getData', async () => {
-  const response = await axios.get('/api/notifications');
-  const data = await response.data;
+export const getNotifications = createAsyncThunk(
+  "notificationPanel/getData",
+  async () => {
+    const response = await axios.get("/v1/notifications");
+    const data = await response.data;
 
-  return data;
-});
+    return data;
+  }
+);
 
-export const dismissAll = createAsyncThunk('notificationPanel/dismissAll', async () => {
-  const response = await axios.delete('/api/notifications');
-  await response.data;
+export const dismissAll = createAsyncThunk(
+  "notificationPanel/dismissAll",
+  async () => {
+    const response = await axios.delete("/v1/notifications");
+    await response.data;
 
-  return true;
-});
+    return true;
+  }
+);
 
-export const dismissItem = createAsyncThunk('notificationPanel/dismissItem', async (id) => {
-  const response = await axios.delete(`/api/notifications/${id}`);
-  await response.data;
+export const dismissItem = createAsyncThunk(
+  "notificationPanel/dismissItem",
+  async (id) => {
+    const response = await axios.delete(`/v1/notifications/${id}`);
+    await response.data;
 
-  return id;
-});
+    return id;
+  }
+);
 
 export const addNotification = createAsyncThunk(
-  'notificationPanel/addNotification',
+  "notificationPanel/addNotification",
   async (item) => {
-    const response = await axios.post(`/api/notifications`, { ...item });
+    const response = await axios.post(`/v1/notifications`, { ...item });
     const data = await response.data;
 
     return data;
@@ -34,19 +47,25 @@ export const addNotification = createAsyncThunk(
 
 const notificationsAdapter = createEntityAdapter({});
 
-const initialState = notificationsAdapter.upsertMany(notificationsAdapter.getInitialState(), []);
+const initialState = notificationsAdapter.upsertMany(
+  notificationsAdapter.getInitialState(),
+  []
+);
 
-export const { selectAll: selectNotifications, selectById: selectNotificationsById } =
-  notificationsAdapter.getSelectors((state) => state.notificationPanel.data);
+export const {
+  selectAll: selectNotifications,
+  selectById: selectNotificationsById,
+} = notificationsAdapter.getSelectors((state) => state.notificationPanel.data);
 
 const dataSlice = createSlice({
-  name: 'notificationPanel/data',
+  name: "notificationPanel/data",
   initialState,
   reducers: {},
   extraReducers: {
     [dismissItem.fulfilled]: (state, action) =>
       notificationsAdapter.removeOne(state, action.payload),
-    [dismissAll.fulfilled]: (state, action) => notificationsAdapter.removeAll(state),
+    [dismissAll.fulfilled]: (state, action) =>
+      notificationsAdapter.removeAll(state),
     [getNotifications.fulfilled]: (state, action) =>
       notificationsAdapter.addMany(state, action.payload),
     [addNotification.fulfilled]: (state, action) =>

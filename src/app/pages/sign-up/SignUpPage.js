@@ -119,7 +119,6 @@ const SignUpPage = () => {
                   {...field}
                   className="mb-24"
                   label="Display name"
-                  autoFocus
                   type="name"
                   error={!!errors.displayName}
                   helperText={errors?.displayName?.message}

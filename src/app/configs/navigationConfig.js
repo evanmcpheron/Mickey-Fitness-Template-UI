@@ -3,8 +3,6 @@ import { authRoles } from "../auth";
 import ar from "./navigation-i18n/ar";
 import en from "./navigation-i18n/en";
 import tr from "./navigation-i18n/tr";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 
 i18next.addResourceBundle("en", "navigation", en);
 i18next.addResourceBundle("tr", "navigation", tr);

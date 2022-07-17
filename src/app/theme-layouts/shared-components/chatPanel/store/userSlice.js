@@ -1,24 +1,30 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const getUserData = createAsyncThunk('chatPanel/user/getUserData', async () => {
-  const response = await axios.get('/api/chat/user');
+export const getUserData = createAsyncThunk(
+  "chatPanel/user/getUserData",
+  async () => {
+    const response = await axios.get("/v1/chat/user");
 
-  const data = await response.data;
+    const data = await response.data;
 
-  return data;
-});
+    return data;
+  }
+);
 
-export const updateUserData = createAsyncThunk('chatPanel/user/updateUserData', async (newData) => {
-  const response = await axios.post('/api/chat/user', newData);
+export const updateUserData = createAsyncThunk(
+  "chatPanel/user/updateUserData",
+  async (newData) => {
+    const response = await axios.post("/v1/chat/user", newData);
 
-  const data = await response.data;
+    const data = await response.data;
 
-  return data;
-});
+    return data;
+  }
+);
 
 const userSlice = createSlice({
-  name: 'chatPanel/user',
+  name: "chatPanel/user",
   initialState: null,
   extraReducers: {
     [getUserData.fulfilled]: (state, action) => action.payload,

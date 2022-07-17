@@ -172,10 +172,6 @@ const headerHeight = 120;
 const toolbarHeight = 64;
 
 const FusePageSimple = forwardRef((props, ref) => {
-  console.log(
-    "🚀 ~ file: FusePageSimple.js ~ line 176 ~ FusePageSimple ~ props",
-    props
-  );
   // console.info("render::FusePageSimple");
   const leftSidebarRef = useRef(null);
   const rightSidebarRef = useRef(null);

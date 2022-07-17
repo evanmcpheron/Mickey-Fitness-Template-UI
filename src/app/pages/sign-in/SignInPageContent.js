@@ -38,7 +38,6 @@ const defaultValues = {
 };
 
 const SignInPageContent = () => {
-  const [isAuth, setIsAuth] = useState(false);
   const { control, formState, handleSubmit, setError, setValue } = useForm({
     mode: "onChange",
     defaultValues,
@@ -46,16 +45,6 @@ const SignInPageContent = () => {
   });
 
   const { isValid, dirtyFields, errors } = formState;
-
-  useEffect(() => {
-    jwtService.getMe().then((response) => {
-      if (response.data.code === 200) {
-        setIsAuth(true);
-      } else {
-        setIsAuth(false);
-      }
-    });
-  }, []);
 
   const onSubmit = ({ email, password, rememberMe }) => {
     jwtService
@@ -73,9 +62,7 @@ const SignInPageContent = () => {
       });
   };
 
-  return isAuth ? (
-    <Navigate to={"/"} />
-  ) : (
+  return (
     <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-1 min-w-0">
       <Paper className="h-full sm:h-auto md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-16 sm:p-48 md:p-64 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none ltr:border-r-1 rtl:border-l-1">
         <div className="w-full max-w-320 sm:w-320 mx-auto sm:mx-0">
@@ -105,7 +92,6 @@ const SignInPageContent = () => {
                   {...field}
                   className="mb-24"
                   label="Email"
-                  autoFocus
                   type="email"
                   error={!!errors.email}
                   helperText={errors?.email?.message}

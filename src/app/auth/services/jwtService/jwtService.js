@@ -69,17 +69,6 @@ class JwtService extends FuseUtils.EventEmitter {
   };
 
   signInWithEmailAndPassword = async (email, password, rememberMe) => {
-    const mockResponse = {
-      uuid: "XgbuVEXBU5gtSKdbQRP1Zbbby1i1",
-      password: "admin",
-      role: "admin",
-      data: {
-        displayName: "Abbott Keitch",
-        photoURL: "assets/images/avatars/brian-hughes.jpg",
-        email: "admin@fusetheme.com",
-      },
-    };
-
     try {
       const response = await axios.post(proxy() + jwtServiceConfig.signIn, {
         email,
@@ -95,6 +84,36 @@ class JwtService extends FuseUtils.EventEmitter {
         "Oops. Something went wrong."
       );
       this.emit("onLoginError", errorMessage);
+    }
+  };
+
+  forgotPassword = async (email) => {
+    try {
+      const response = await axios.post(
+        proxy() + jwtServiceConfig.forgotPassword,
+        { email }
+      );
+      this.emit("onForgotPassword", response.data.message);
+    } catch (error) {
+      const errorMessage = get(error, "message", "Oops. Something went wrong.");
+
+      this.emit("onForgotPasswordError", errorMessage);
+    }
+  };
+
+  passwordReset = async (password, userId, token) => {
+    try {
+      const response = await axios.post(
+        `${proxy()}${jwtServiceConfig.passwordReset}/${userId}/${token}`,
+        { password }
+      );
+      console.log(
+        "🚀 ~ file: jwtService.js ~ line 97 ~ JwtService ~ passwordReset= ~ response",
+        response.data.message
+      );
+      this.emit("onForgotPassword", response.data.message);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -127,12 +146,7 @@ class JwtService extends FuseUtils.EventEmitter {
   logout = async () => {
     try {
       await axios.post(proxy() + jwtServiceConfig.signOut);
-    } catch (error) {
-      console.log(
-        "🚀 ~ file: jwtService.js ~ line 119 ~ JwtService ~ logout= ~ error",
-        error
-      );
-    }
+    } catch (error) {}
     this.emit("onLogout");
   };
 

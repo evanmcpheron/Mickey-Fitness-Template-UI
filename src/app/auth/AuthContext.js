@@ -32,6 +32,18 @@ const AuthProvider = ({ children }) => {
       success(user);
     });
 
+    jwtService.on("onForgotPassword", (message) => {
+      pass(message, "success");
+    });
+
+    jwtService.on("onForgotPasswordError", (message) => {
+      console.log(
+        "🚀 ~ file: AuthContext.js ~ line 40 ~ jwtService.on ~ message",
+        message
+      );
+      pass(message, "error");
+    });
+
     jwtService.on("onLoginError", (message) => {
       pass(message, null);
     });

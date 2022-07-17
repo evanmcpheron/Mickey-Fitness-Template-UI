@@ -23,10 +23,6 @@ const messageSlice = createSlice({
         ...initialState.options,
         ...action.payload,
       };
-      console.log(
-        "🚀 ~ file: messageSlice.js ~ line 24 ~ state.options",
-        state.options
-      );
     },
     hideMessage: (state, action) => {
       state.state = null;
