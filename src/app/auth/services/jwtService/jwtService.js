@@ -105,12 +105,9 @@ class JwtService extends FuseUtils.EventEmitter {
     try {
       const response = await axios.post(
         `${proxy()}${jwtServiceConfig.passwordReset}/${userId}/${token}`,
-        { password }
+        password
       );
-      console.log(
-        "🚀 ~ file: jwtService.js ~ line 97 ~ JwtService ~ passwordReset= ~ response",
-        response.data.message
-      );
+
       this.emit("onForgotPassword", response.data.message);
     } catch (error) {
       console.log(error);
