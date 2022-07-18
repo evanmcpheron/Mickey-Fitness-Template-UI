@@ -10,15 +10,12 @@ import {
   selectToolbarTheme,
 } from "app/store/fuse/settingsSlice";
 import { selectFuseNavbar } from "app/store/fuse/navbarSlice";
-import AdjustFontSize from "../../shared-components/AdjustFontSize";
 import FullScreenToggle from "../../shared-components/FullScreenToggle";
 import LanguageSwitcher from "../../shared-components/LanguageSwitcher";
 import NotificationPanelToggleButton from "../../shared-components/notificationPanel/NotificationPanelToggleButton";
 import NavigationSearch from "../../shared-components/NavigationSearch";
 import NavbarToggleButton from "../../shared-components/NavbarToggleButton";
 import UserMenu from "../../shared-components/UserMenu";
-import QuickPanelToggleButton from "../../shared-components/quickPanel/QuickPanelToggleButton";
-import ChatPanelToggleButton from "../../shared-components/chatPanel/ChatPanelToggleButton";
 import DarkModeToggle from "app/theme-layouts/shared-components/DarkModeToggle";
 
 function ToolbarLayout1(props) {

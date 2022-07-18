@@ -89,7 +89,7 @@ const initialState = {
   uuid: "",
   data: {
     displayName: "Guest",
-    photoURL: "assets/images/avatars/brian-hughes.jpg",
+    photoURL: "default-profile.jpg",
     email: "",
   },
 };

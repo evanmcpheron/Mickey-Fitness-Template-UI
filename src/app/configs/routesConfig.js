@@ -10,6 +10,7 @@ import SignUpConfig from "../pages/sign-up/SignUpConfig";
 import HomeConfig from "../pages/home/HomeConfig";
 import ForgotPasswordConfig from "../pages/forgotPassword/ForgotPasswordConfig";
 import PasswordResetConfig from "../pages/passwordReset/PasswordResetConfig";
+import HelpCenterAppConfig from "../pages/help-center/HelpCenterAppConfig";
 
 const routeConfigs = [
   ExampleConfig,
@@ -19,6 +20,7 @@ const routeConfigs = [
   HomeConfig,
   ForgotPasswordConfig,
   PasswordResetConfig,
+  HelpCenterAppConfig,
 ];
 
 const routes = [
@@ -29,11 +31,6 @@ const routes = [
   {
     path: "",
     element: <FuseLoading />,
-  },
-  {
-    path: "test",
-    element: <Navigate to="/example" />,
-    auth: settingsConfig.defaultAuth,
   },
   {
     path: "loading",

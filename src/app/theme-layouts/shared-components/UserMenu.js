@@ -13,7 +13,7 @@ import { selectUser } from "app/store/userSlice";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 
-function UserMenu(props) {
+const UserMenu = (props) => {
   const user = useSelector(selectUser);
 
   const [userMenu, setUserMenu] = useState(null);
@@ -52,7 +52,7 @@ function UserMenu(props) {
           <Avatar
             className="md:mx-4"
             alt="user photo"
-            src={user.data.photoURL}
+            src={`https://mickey-fitness.s3.us-west-1.amazonaws.com/${user.data.photoURL}`}
           />
         ) : (
           <Avatar className="md:mx-4">{user.data.displayName[0]}</Avatar>
@@ -131,6 +131,6 @@ function UserMenu(props) {
       </Popover>
     </>
   );
-}
+};
 
 export default UserMenu;
