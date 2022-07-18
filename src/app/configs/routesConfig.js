@@ -11,6 +11,7 @@ import HomeConfig from "../pages/home/HomeConfig";
 import ForgotPasswordConfig from "../pages/forgotPassword/ForgotPasswordConfig";
 import PasswordResetConfig from "../pages/passwordReset/PasswordResetConfig";
 import HelpCenterAppConfig from "../pages/help-center/HelpCenterAppConfig";
+import FileManagerAppConfig from "../pages/file-manager/FileManagerAppConfig";
 
 const routeConfigs = [
   ExampleConfig,
@@ -21,6 +22,7 @@ const routeConfigs = [
   ForgotPasswordConfig,
   PasswordResetConfig,
   HelpCenterAppConfig,
+  FileManagerAppConfig,
 ];
 
 const routes = [
