@@ -24,7 +24,6 @@ const origin =
     ? "https://api.mickeyfitness.com"
     : "http://localhost:3000";
 
-axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = origin;
 axios.defaults.withCredentials = true;
 

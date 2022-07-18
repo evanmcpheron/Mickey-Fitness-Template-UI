@@ -8,3 +8,7 @@ export const proxy = () => {
       return "https://api.mickeyfitness.com";
   }
 };
+
+export const s3Proxy = () => {
+  return "https://mickey-fitness.s3.us-west-1.amazonaws.com/";
+};

@@ -6,6 +6,7 @@ import Logo from "../../../../shared-components/Logo";
 import NavbarToggleButton from "../../../../shared-components/NavbarToggleButton";
 import UserNavbarHeader from "../../../../shared-components/UserNavbarHeader";
 import Navigation from "../../../../shared-components/Navigation";
+import { s3Proxy } from "src/app/helper/proxy";
 
 const Root = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -59,7 +60,7 @@ function NavbarStyle1Content(props) {
         <div className="flex flex-0 items-center justify-center py-48 opacity-10">
           <img
             className="w-full max-w-64"
-            src="assets/images/logo/logo.svg"
+            src={s3Proxy() + "logo.svg"}
             alt="footer logo"
           />
         </div>
