@@ -1,11 +1,15 @@
 import { memo, useState } from "react";
-import { LightMode, DarkMode } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 
 const SchemePreview = ({ theme, onSelect }) => {
   return (
     <IconButton onClick={() => onSelect(theme)} type="button">
-      {theme.palette.mode === "light" ? <LightMode /> : <DarkMode />}
+      {theme.palette.mode === "light" ? (
+        <FuseSvgIcon icon="sun" />
+      ) : (
+        <FuseSvgIcon icon="moon" />
+      )}
     </IconButton>
   );
 };
@@ -19,11 +23,11 @@ const FuseThemeSchemes = (props) => {
     if (mode === "light") {
       setMode("dark");
       localStorage.setItem("mode", "dark");
-      return themes["dark"];
+      return themes.dark;
     }
     setMode("light");
     localStorage.setItem("mode", "light");
-    return themes["light"];
+    return themes.light;
   };
 
   return (

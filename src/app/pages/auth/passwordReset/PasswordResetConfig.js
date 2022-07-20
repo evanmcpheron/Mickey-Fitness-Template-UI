@@ -1,5 +1,5 @@
 import PasswordResetPage from "./PasswordResetPage";
-import authRoles from "../../auth/authRoles";
+import authRoles from "../../../auth/authRoles";
 
 const PasswordResetConfig = {
   settings: {

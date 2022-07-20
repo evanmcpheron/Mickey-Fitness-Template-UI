@@ -69,9 +69,8 @@ function FuseNavVerticalItem(props) {
           <FuseSvgIcon
             className={clsx("fuse-list-item-icon shrink-0", item.iconClass)}
             color="action"
-          >
-            {item.icon}
-          </FuseSvgIcon>
+            icon={item.icon}
+          />
         )}
 
         <ListItemText

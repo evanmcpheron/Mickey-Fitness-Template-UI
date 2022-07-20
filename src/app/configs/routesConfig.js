@@ -2,19 +2,17 @@ import FuseUtils from "@fuse/utils";
 import FuseLoading from "@fuse/core/FuseLoading";
 import { Navigate } from "react-router-dom";
 import settingsConfig from "app/configs/settingsConfig";
-import SignOutConfig from "../pages/sign-out/SignOutConfig";
+import SignOutConfig from "../pages/auth/sign-out/SignOutConfig";
 import Error404Page from "../pages/404/Error404Page";
-import ExampleConfig from "../pages/example/ExampleConfig";
-import SignInConfig from "../pages/sign-in/SignInConfig";
-import SignUpConfig from "../pages/sign-up/SignUpConfig";
+import SignInConfig from "../pages/auth/sign-in/SignInConfig";
+import SignUpConfig from "../pages/auth/sign-up/SignUpConfig";
 import HomeConfig from "../pages/home/HomeConfig";
-import ForgotPasswordConfig from "../pages/forgotPassword/ForgotPasswordConfig";
-import PasswordResetConfig from "../pages/passwordReset/PasswordResetConfig";
+import ForgotPasswordConfig from "../pages/auth/forgotPassword/ForgotPasswordConfig";
+import PasswordResetConfig from "../pages/auth/passwordReset/PasswordResetConfig";
 import HelpCenterAppConfig from "../pages/help-center/HelpCenterAppConfig";
 import FileManagerAppConfig from "../pages/file-manager/FileManagerAppConfig";
 
 const routeConfigs = [
-  ExampleConfig,
   SignOutConfig,
   SignInConfig,
   SignUpConfig,
@@ -31,16 +29,8 @@ const routes = [
     settingsConfig.defaultAuth
   ),
   {
-    path: "",
-    element: <FuseLoading />,
-  },
-  {
     path: "loading",
     element: <FuseLoading />,
-  },
-  {
-    path: "404",
-    element: <Error404Page />,
   },
   {
     path: "*",

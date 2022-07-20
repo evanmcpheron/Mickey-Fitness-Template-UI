@@ -10,8 +10,6 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import { selectUser } from "app/store/userSlice";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 
 const UserMenu = (props) => {
   const user = useSelector(selectUser);
@@ -79,13 +77,13 @@ const UserMenu = (props) => {
           <>
             <MenuItem component={Link} to="/sign-in" role="button">
               <ListItemIcon className="min-w-40">
-                <LockOpenOutlinedIcon />
+                <FuseSvgIcon icon="lock-open" />
               </ListItemIcon>
               <ListItemText primary="Sign In" />
             </MenuItem>
             <MenuItem component={Link} to="/sign-up" role="button">
               <ListItemIcon className="min-w-40">
-                <PersonAddAltIcon />
+                <FuseSvgIcon icon="user-plus" />
               </ListItemIcon>
               <ListItemText primary="Sign up" />
             </MenuItem>

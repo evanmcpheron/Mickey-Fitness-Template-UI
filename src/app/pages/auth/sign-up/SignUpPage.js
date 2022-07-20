@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import * as yup from "yup";
 import _ from "@lodash";
 import AvatarGroup from "@mui/material/AvatarGroup";
@@ -15,13 +15,18 @@ import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import FormHelperText from "@mui/material/FormHelperText";
-import jwtService from "../../auth/services/jwtService";
+import jwtService from "../../../auth/services/jwtService";
 import { s3Proxy } from "src/app/helper/proxy";
 
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
+  displayName: yup.string().required("You must enter display name"),
+  email: yup
+    .string()
+    .email("You must enter a valid email")
+    .required("You must enter a email"),
   password: yup
     .string()
     .required("Please enter your password.")
@@ -29,18 +34,32 @@ const schema = yup.object().shape({
   passwordConfirm: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match"),
+  acceptTermsConditions: yup
+    .boolean()
+    .oneOf([true], "The terms and conditions must be accepted."),
 });
 
 const defaultValues = {
+  displayName: "",
+  email: "",
   password: "",
   passwordConfirm: "",
+  acceptTermsConditions: false,
 };
 
-const PasswordResetPage = () => {
-  const { userId, token } = useParams();
+const SignUpPage = () => {
+  const [isAuth, setIsAuth] = useState(false);
+  useEffect(() => {
+    jwtService.getMe().then((response) => {
+      if (response.data.code === 200) {
+        setIsAuth(true);
+      } else {
+        setIsAuth(false);
+      }
+    });
+  }, []);
 
-  const navigate = useNavigate();
-  const { control, formState, handleSubmit } = useForm({
+  const { control, formState, handleSubmit, reset } = useForm({
     mode: "onChange",
     defaultValues,
     resolver: yupResolver(schema),
@@ -48,18 +67,16 @@ const PasswordResetPage = () => {
 
   const { isValid, dirtyFields, errors, setError } = formState;
 
-  const onSubmit = ({ password }) => {
+  function onSubmit({ displayName, password, email }) {
     jwtService
-      .passwordReset(
-        {
-          password,
-        },
-        userId,
-        token
-      )
+      .createUser({
+        displayName,
+        password,
+        email,
+      })
       .then((user) => {
         console.log(user);
-        navigate("/sign-in");
+        return <Navigate to={"/"} />;
       })
       .catch((_errors) => {
         _errors.forEach((error) => {
@@ -69,23 +86,68 @@ const PasswordResetPage = () => {
           });
         });
       });
-  };
+  }
 
-  return (
+  return isAuth ? (
+    <Navigate to={"/"} />
+  ) : (
     <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-1 min-w-0">
       <Paper className="h-full sm:h-auto md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-16 sm:p-48 md:p-64 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none ltr:border-r-1 rtl:border-l-1">
         <div className="w-full max-w-320 sm:w-320 mx-auto sm:mx-0">
           <img className="w-48" src={s3Proxy() + "logo.svg"} alt="logo" />
 
           <Typography className="mt-32 text-4xl font-extrabold tracking-tight leading-tight">
-            Password Reset
+            Sign up
           </Typography>
+          <div className="flex items-baseline mt-2 font-medium">
+            <Typography>Already have an account?</Typography>
+            <Link className="ml-4" to="/sign-in">
+              Sign in
+            </Link>
+          </div>
+
           <form
             name="registerForm"
             noValidate
             className="flex flex-col justify-center w-full mt-32"
             onSubmit={handleSubmit(onSubmit)}
           >
+            <Controller
+              name="displayName"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  className="mb-24"
+                  label="Display name"
+                  type="name"
+                  error={!!errors.displayName}
+                  helperText={errors?.displayName?.message}
+                  variant="outlined"
+                  required
+                  fullWidth
+                />
+              )}
+            />
+
+            <Controller
+              name="email"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  className="mb-24"
+                  label="Email"
+                  type="email"
+                  error={!!errors.email}
+                  helperText={errors?.email?.message}
+                  variant="outlined"
+                  required
+                  fullWidth
+                />
+              )}
+            />
+
             <Controller
               name="password"
               control={control}
@@ -103,6 +165,7 @@ const PasswordResetPage = () => {
                 />
               )}
             />
+
             <Controller
               name="passwordConfirm"
               control={control}
@@ -120,6 +183,26 @@ const PasswordResetPage = () => {
                 />
               )}
             />
+
+            <Controller
+              name="acceptTermsConditions"
+              control={control}
+              render={({ field }) => (
+                <FormControl
+                  className="items-center"
+                  error={!!errors.acceptTermsConditions}
+                >
+                  <FormControlLabel
+                    label="I agree to the Terms of Service and Privacy Policy"
+                    control={<Checkbox size="small" {...field} />}
+                  />
+                  <FormHelperText>
+                    {errors?.acceptTermsConditions?.message}
+                  </FormHelperText>
+                </FormControl>
+              )}
+            />
+
             <Button
               variant="contained"
               color="secondary"
@@ -129,17 +212,8 @@ const PasswordResetPage = () => {
               type="submit"
               size="large"
             >
-              Reset Password
+              Create your free account
             </Button>
-            <Typography
-              className="mt-32 text-md font-medium"
-              color="text.secondary"
-            >
-              <span>Return to</span>
-              <Link className="ml-4" to="/sign-in">
-                sign in
-              </Link>
-            </Typography>
           </form>
         </div>
       </Paper>
@@ -230,4 +304,4 @@ const PasswordResetPage = () => {
   );
 };
 
-export default PasswordResetPage;
+export default SignUpPage;

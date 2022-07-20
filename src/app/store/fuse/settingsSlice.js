@@ -151,7 +151,7 @@ function generateMuiTheme(theme, direction) {
 
 export const selectContrastMainTheme = (bgColor) => {
   function isDark(color) {
-    return getContrastRatio(color, "#ffffff") >= 3;
+    return getContrastRatio(color, "#fafafa") >= 3;
   }
   return isDark(bgColor) ? selectMainThemeDark : selectMainThemeLight;
 };

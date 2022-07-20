@@ -2,11 +2,10 @@ import FuseScrollbars from "@fuse/core/FuseScrollbars";
 import { styled } from "@mui/material/styles";
 import clsx from "clsx";
 import { memo } from "react";
-import Logo from "../../../../shared-components/Logo";
+import { s3Proxy } from "src/app/helper/proxy";
 import NavbarToggleButton from "../../../../shared-components/NavbarToggleButton";
 import UserNavbarHeader from "../../../../shared-components/UserNavbarHeader";
 import Navigation from "../../../../shared-components/Navigation";
-import { s3Proxy } from "src/app/helper/proxy";
 
 const Root = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -46,6 +45,13 @@ function NavbarStyle1Content(props) {
       )}
     >
       <div className="flex flex-row items-center shrink-0 h-48 md:h-72 px-20">
+        <div className="flex flex-1 mx-4">
+          <img
+            className="w-full max-w-64"
+            src={`${s3Proxy()}logo.svg`}
+            alt="footer logo"
+          />
+        </div>
         <NavbarToggleButton className="w-40 h-40 p-0" />
       </div>
 
@@ -60,7 +66,7 @@ function NavbarStyle1Content(props) {
         <div className="flex flex-0 items-center justify-center py-48 opacity-10">
           <img
             className="w-full max-w-64"
-            src={s3Proxy() + "logo.svg"}
+            src={`${s3Proxy()}logo.svg`}
             alt="footer logo"
           />
         </div>

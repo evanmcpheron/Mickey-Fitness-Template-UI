@@ -12,9 +12,9 @@ import body from "app/theme-layouts/body";
 import { selectMainTheme } from "app/store/fuse/settingsSlice";
 import FuseAuthorization from "@fuse/core/FuseAuthorization";
 import settingsConfig from "app/configs/settingsConfig";
+import axios from "axios";
 import withAppProviders from "./withAppProviders";
 import { AuthProvider } from "./auth/AuthContext";
-import axios from "axios";
 /**
  * Axios HTTP Request defaults
  */
@@ -25,7 +25,7 @@ const origin =
     : "http://localhost:3000";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = origin;
-axios.defaults.withCredentials = true;
+axios.create({ withCredentials: true });
 
 const emotionCacheOptions = {
   rtl: {

@@ -17,6 +17,7 @@ const Root = styled("div")(({ theme, config }) => ({
     clipPath: "inset(0)",
     maxWidth: `${config.containerWidth}px`,
     margin: "0 auto",
+    background: "blue",
     boxShadow:
       "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
   }),
@@ -37,11 +38,8 @@ function Layout1(props) {
   return (
     <Root id="fuse-layout" config={config} className="w-full flex">
       {config.leftSidePanel.display && <LeftSideLayout1 />}
-
       <div className="flex flex-auto min-w-0">
-        {config.navbar.display && config.navbar.position === "left" && (
-          <NavbarWrapperLayout1 />
-        )}
+        <NavbarWrapperLayout1 />
 
         <main
           id="fuse-main"
@@ -53,9 +51,7 @@ function Layout1(props) {
 
           <div className="flex flex-col flex-auto min-h-0 relative z-10">
             <FuseDialog />
-
             <FuseSuspense>{useRoutes(routes)}</FuseSuspense>
-
             {props.children}
           </div>
 
@@ -63,12 +59,7 @@ function Layout1(props) {
             className={config.footer.style === "fixed" && "sticky bottom-0"}
           />
         </main>
-
-        {config.navbar.display && config.navbar.position === "right" && (
-          <NavbarWrapperLayout1 />
-        )}
       </div>
-
       <FuseMessage />
     </Root>
   );

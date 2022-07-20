@@ -13,14 +13,14 @@ const navigationConfig = [
     id: "home-component",
     title: "HOME",
     type: "item",
-    icon: "heroicons-outline:home",
+    icon: "home",
     url: "",
   },
   {
     id: "help-center",
     title: "HELP CENTER",
     type: "item",
-    icon: "heroicons-outline:support",
+    icon: "circle-info",
     url: "/help-center",
   },
   {
@@ -28,7 +28,7 @@ const navigationConfig = [
     title: "FILE MANAGER",
     type: "item",
     auth: authRoles.admin,
-    icon: "heroicons-outline:cloud",
+    icon: "cloud",
     url: "/file-manager",
   },
   {
@@ -36,7 +36,7 @@ const navigationConfig = [
     title: "SIGN IN",
     auth: authRoles.onlyGuest,
     type: "item",
-    icon: "heroicons-outline:lock-open",
+    icon: "lock-open",
     url: "sign-in",
   },
   {
@@ -44,7 +44,7 @@ const navigationConfig = [
     title: "SIGN UP",
     auth: authRoles.onlyGuest,
     type: "item",
-    icon: "heroicons-outline:user-add",
+    icon: "user-plus",
     url: "sign-up",
   },
 ];

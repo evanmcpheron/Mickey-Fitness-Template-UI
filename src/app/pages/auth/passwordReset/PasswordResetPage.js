@@ -7,51 +7,59 @@ import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import _ from "@lodash";
-import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import jwtService from "../../auth/services/jwtService";
+import FormHelperText from "@mui/material/FormHelperText";
+import jwtService from "../../../auth/services/jwtService";
 import { s3Proxy } from "src/app/helper/proxy";
 
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email("You must enter a valid email")
-    .required("You must enter a email"),
   password: yup
     .string()
     .required("Please enter your password.")
-    .min(8, "Password is too short - must be at least 8 chararcters."),
+    .min(8, "Password is too short - should be 8 chars minimum."),
+  passwordConfirm: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
 const defaultValues = {
-  email: "",
   password: "",
-  rememberMe: false,
+  passwordConfirm: "",
 };
 
-const SignInPageContent = () => {
-  const { control, formState, handleSubmit, setError, setValue } = useForm({
+const PasswordResetPage = () => {
+  const { userId, token } = useParams();
+
+  const navigate = useNavigate();
+  const { control, formState, handleSubmit } = useForm({
     mode: "onChange",
     defaultValues,
     resolver: yupResolver(schema),
   });
 
-  const { isValid, dirtyFields, errors } = formState;
+  const { isValid, dirtyFields, errors, setError } = formState;
 
-  const onSubmit = ({ email, password, rememberMe }) => {
+  const onSubmit = ({ password }) => {
     jwtService
-      .signInWithEmailAndPassword(email, password, rememberMe)
+      .passwordReset(
+        {
+          password,
+        },
+        userId,
+        token
+      )
       .then((user) => {
-        // No need to do anything, user data will be set at app/auth/AuthContext
+        console.log(user);
+        navigate("/sign-in");
       })
       .catch((_errors) => {
         _errors.forEach((error) => {
@@ -70,39 +78,14 @@ const SignInPageContent = () => {
           <img className="w-48" src={s3Proxy() + "logo.svg"} alt="logo" />
 
           <Typography className="mt-32 text-4xl font-extrabold tracking-tight leading-tight">
-            Sign in
+            Password Reset
           </Typography>
-          <div className="flex items-baseline mt-2 font-medium">
-            <Typography>Don't have an account?</Typography>
-            <Link className="ml-4" to="/sign-up">
-              Sign up
-            </Link>
-          </div>
-
           <form
-            name="loginForm"
+            name="registerForm"
             noValidate
             className="flex flex-col justify-center w-full mt-32"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <Controller
-              name="email"
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  className="mb-24"
-                  label="Email"
-                  type="email"
-                  error={!!errors.email}
-                  helperText={errors?.email?.message}
-                  variant="outlined"
-                  required
-                  fullWidth
-                />
-              )}
-            />
-
             <Controller
               name="password"
               control={control}
@@ -120,63 +103,43 @@ const SignInPageContent = () => {
                 />
               )}
             />
-
-            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between">
-              <Controller
-                name="rememberMe"
-                control={control}
-                render={({ field }) => (
-                  <FormControl>
-                    <FormControlLabel
-                      label="Remember me"
-                      control={<Checkbox size="small" {...field} />}
-                    />
-                  </FormControl>
-                )}
-              />
-
-              <Link className="text-md font-medium" to="/forgot-password">
-                Forgot password?
-              </Link>
-            </div>
-
+            <Controller
+              name="passwordConfirm"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  className="mb-24"
+                  label="Password (Confirm)"
+                  type="password"
+                  error={!!errors.passwordConfirm}
+                  helperText={errors?.passwordConfirm?.message}
+                  variant="outlined"
+                  required
+                  fullWidth
+                />
+              )}
+            />
             <Button
               variant="contained"
               color="secondary"
-              className=" w-full mt-16"
-              aria-label="Sign in"
+              className="w-full mt-24"
+              aria-label="Register"
               disabled={_.isEmpty(dirtyFields) || !isValid}
               type="submit"
               size="large"
             >
-              Sign in
+              Reset Password
             </Button>
-
-            <div className="flex items-center mt-32">
-              <div className="flex-auto mt-px border-t" />
-              <Typography className="mx-8" color="text.secondary">
-                Or continue with
-              </Typography>
-              <div className="flex-auto mt-px border-t" />
-            </div>
-
-            <div className="flex items-center mt-32 space-x-16">
-              <Button variant="outlined" className="flex-auto">
-                <FuseSvgIcon size={20} color="action">
-                  feather:facebook
-                </FuseSvgIcon>
-              </Button>
-              <Button variant="outlined" className="flex-auto">
-                <FuseSvgIcon size={20} color="action">
-                  feather:twitter
-                </FuseSvgIcon>
-              </Button>
-              <Button variant="outlined" className="flex-auto">
-                <FuseSvgIcon size={20} color="action">
-                  feather:github
-                </FuseSvgIcon>
-              </Button>
-            </div>
+            <Typography
+              className="mt-32 text-md font-medium"
+              color="text.secondary"
+            >
+              <span>Return to</span>
+              <Link className="ml-4" to="/sign-in">
+                sign in
+              </Link>
+            </Typography>
           </form>
         </div>
       </Paper>
@@ -267,4 +230,4 @@ const SignInPageContent = () => {
   );
 };
 
-export default SignInPageContent;
+export default PasswordResetPage;

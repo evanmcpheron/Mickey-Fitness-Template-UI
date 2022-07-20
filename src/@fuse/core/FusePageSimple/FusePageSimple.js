@@ -4,7 +4,6 @@ import clsx from "clsx";
 import * as PropTypes from "prop-types";
 import { forwardRef, memo, useImperativeHandle, useRef } from "react";
 import GlobalStyles from "@mui/material/GlobalStyles";
-import FusePageSimpleHeader from "./FusePageSimpleHeader";
 import FusePageSimpleSidebar from "./FusePageSimpleSidebar";
 
 const Root = styled("div")(({ theme, ...props }) => ({
@@ -29,7 +28,10 @@ const Root = styled("div")(({ theme, ...props }) => ({
     zIndex: 2,
     minWidth: 0,
     height: "100%",
-    backgroundColor: theme.palette.background.default,
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? theme.palette.background.default
+        : theme.palette.background.paper,
 
     ...(props.scroll === "content" && {
       position: "absolute",
@@ -240,8 +242,6 @@ const FusePageSimple = forwardRef((props, ref) => {
               className="FusePageSimple-contentWrapper"
               // enable={props.scroll === 'page'}
             >
-              {props.header && <FusePageSimpleHeader header={props.header} />}
-
               {props.content && (
                 <FuseScrollbars
                   enable={props.scroll === "content"}

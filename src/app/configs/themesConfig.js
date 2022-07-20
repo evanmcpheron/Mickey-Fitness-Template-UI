@@ -29,8 +29,9 @@ const themesConfig = {
         contrastText: lightPaletteText.primary,
       },
       background: {
-        paper: "#FFFFFF",
+        paper: "#FAFAFA",
         default: "#F0F7F7",
+        red: "#FF0000",
       },
       error: {
         light: "#ffcdd2",
@@ -62,6 +63,7 @@ const themesConfig = {
       background: {
         paper: "#465261",
         default: "#232931",
+        red: "#FF0000",
       },
       error: {
         light: "#ffcdd2",

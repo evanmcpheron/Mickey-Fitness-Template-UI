@@ -40,10 +40,6 @@ function UserNavbarHeader(props) {
           src={`https://mickey-fitness.s3.us-west-1.amazonaws.com/${user.data.photoURL}`}
           alt={user.data.displayName}
         >
-          {console.log(
-            "🚀 ~ file: UserNavbarHeader.js ~ line 41 ~ UserNavbarHeader ~ user",
-            `https://mickey-fitness.s3.us-west-1.amazonaws.com/${user.data.photoURL}`
-          )}
           {user.data.displayName.charAt(0)}
         </Avatar>
       </div>
