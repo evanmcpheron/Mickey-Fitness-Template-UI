@@ -17,11 +17,18 @@ const inputGlobalStyles = (
   <GlobalStyles
     styles={(theme) => ({
       html: {
-        backgroundColor: `${theme.palette.background.default}!important`,
+        backgroundColor: `${
+          theme.palette.mode === "light"
+            ? theme.palette.background.default
+            : theme.palette.background.paper
+        }!important`,
         color: `${theme.palette.text.primary}!important`,
       },
       body: {
-        backgroundColor: theme.palette.background.default,
+        backgroundColor:
+          theme.palette.mode === "light"
+            ? theme.palette.background.default
+            : theme.palette.background.paper,
         color: theme.palette.text.primary,
       },
       /*  'code:not([class*="language-"])': {

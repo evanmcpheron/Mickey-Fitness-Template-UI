@@ -15,7 +15,10 @@ const Root = styled("div")(({ theme, ...props }) => ({
   flex: "1 1 auto",
   width: "100%",
   height: "auto",
-  backgroundColor: theme.palette.background.default,
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? theme.palette.background.default
+      : theme.palette.background.paper,
 
   "&.FusePageSimple-scroll-content": {
     height: "100%",

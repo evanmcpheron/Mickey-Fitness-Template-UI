@@ -61,7 +61,7 @@ const themesConfig = {
         contrastText: darkPaletteText.primary,
       },
       background: {
-        paper: "#465261",
+        paper: "#2e3640",
         default: "#232931",
         red: "#FF0000",
       },
