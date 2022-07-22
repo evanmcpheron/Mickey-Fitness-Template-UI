@@ -1,42 +1,40 @@
-import BrowserRouter from "@fuse/core/BrowserRouter";
-import FuseLayout from "@fuse/core/FuseLayout";
-import FuseTheme from "@fuse/core/FuseTheme";
-import { SnackbarProvider } from "notistack";
-import { useSelector } from "react-redux";
-import rtlPlugin from "stylis-plugin-rtl";
-import createCache from "@emotion/cache";
-import { CacheProvider } from "@emotion/react";
-import { selectCurrentLanguageDirection } from "app/store/i18nSlice";
-import { selectUser } from "app/store/userSlice";
-import body from "app/theme-layouts/body";
-import { selectMainTheme } from "app/store/fuse/settingsSlice";
-import FuseAuthorization from "@fuse/core/FuseAuthorization";
-import settingsConfig from "app/configs/settingsConfig";
-import axios from "axios";
-import withAppProviders from "./withAppProviders";
-import { AuthProvider } from "./auth/AuthContext";
+import BrowserRouter from '@fuse/core/BrowserRouter';
+import FuseLayout from '@fuse/core/FuseLayout';
+import FuseTheme from '@fuse/core/FuseTheme';
+import { SnackbarProvider } from 'notistack';
+import { useSelector } from 'react-redux';
+import rtlPlugin from 'stylis-plugin-rtl';
+import createCache from '@emotion/cache';
+import { CacheProvider } from '@emotion/react';
+import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
+import { selectUser } from 'app/store/userSlice';
+import body from 'app/theme-layouts/body';
+import { selectMainTheme } from 'app/store/fuse/settingsSlice';
+import FuseAuthorization from '@fuse/core/FuseAuthorization';
+import settingsConfig from 'app/configs/settingsConfig';
+import axios from 'axios';
+import withAppProviders from './withAppProviders';
+import { AuthProvider } from './auth/AuthContext';
 /**
  * Axios HTTP Request defaults
  */
 
 const origin =
-  process.env.NODE_ENV === "production"
-    ? "https://api.mickeyfitness.com"
-    : "http://localhost:3000";
+  process.env.NODE_ENV === 'production' ? 'https://api.mickeyfitness.com' : 'http://localhost:3000';
 
-axios.defaults.headers.common["Access-Control-Allow-Origin"] = origin;
-axios.create({ withCredentials: true });
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = origin;
+axios.defaults.withCredentials = true;
 
 const emotionCacheOptions = {
   rtl: {
-    key: "muirtl",
+    key: 'muirtl',
     stylisPlugins: [rtlPlugin],
-    insertionPoint: document.getElementById("emotion-insertion-point"),
+    insertionPoint: document.getElementById('emotion-insertion-point'),
   },
   ltr: {
-    key: "muiltr",
+    key: 'muiltr',
     stylisPlugins: [],
-    insertionPoint: document.getElementById("emotion-insertion-point"),
+    insertionPoint: document.getElementById('emotion-insertion-point'),
   },
 };
 
@@ -57,8 +55,8 @@ const App = () => {
               <SnackbarProvider
                 maxSnack={5}
                 anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
+                  vertical: 'bottom',
+                  horizontal: 'right',
                 }}
               >
                 <FuseLayout layout={body} />
