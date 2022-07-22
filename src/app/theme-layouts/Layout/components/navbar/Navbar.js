@@ -4,7 +4,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { useDispatch, useSelector } from 'react-redux';
 import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
-import NavbarStyle1Content from './NavbarContent';
+import NavbarContent from 'app/theme-layouts/Layout/components/navbar/NavbarContent';
 
 const navbarWidth = 280;
 
@@ -53,7 +53,7 @@ function Navbar(props) {
           open={navbar.open}
           position={config.navbar.position}
         >
-          <NavbarStyle1Content />
+          <NavbarContent />
         </StyledNavBar>
       </Hidden>
 
@@ -72,7 +72,7 @@ function Navbar(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
         >
-          <NavbarStyle1Content />
+          <NavbarContent />
         </StyledNavBarMobile>
       </Hidden>
     </>

@@ -5,7 +5,7 @@ const config = {
     containerWidth: 1570,
     navbar: {
       display: true,
-      style: 'style-1',
+      style: 'style',
       folded: true,
       position: 'left',
     },
@@ -75,8 +75,8 @@ const config = {
           type: 'radio',
           options: [
             {
-              name: 'Slide (style-1)',
-              value: 'style-1',
+              name: 'Slide (style)',
+              value: 'style',
             },
             {
               name: 'Folded (style-2)',

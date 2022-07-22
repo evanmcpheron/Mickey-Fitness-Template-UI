@@ -1,7 +1,7 @@
-import layout1 from "./Layout/Layout1Config";
+import layout from './Layout/LayoutConfig';
 
 const themeLayoutConfigs = {
-  layout1,
+  layout,
 };
 
 export default themeLayoutConfigs;

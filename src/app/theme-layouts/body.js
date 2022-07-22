@@ -1,7 +1,7 @@
-import layout1 from "./Layout/Layout1";
+import layout from './Layout/Layout';
 
 const body = {
-  layout1,
+  layout,
 };
 
 export default body;

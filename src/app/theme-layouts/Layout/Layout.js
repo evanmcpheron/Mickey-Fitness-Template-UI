@@ -7,9 +7,9 @@ import { memo, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router-dom';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
-import FooterLayout1 from './components/Footer';
-import NavbarWrapperLayout1 from './components/NavbarWrapper';
-import ToolbarLayout1 from './components/ToolbarLayout1';
+import Footer from './components/Footer';
+import NavbarWrapper from './components/NavbarWrapper';
+import Toolbar from './components/ToolbarMenu';
 
 const Root = styled('div')(({ theme, config }) => ({
   ...(config.mode === 'boxed' && {
@@ -28,7 +28,7 @@ const Root = styled('div')(({ theme, config }) => ({
   }),
 }));
 
-function Layout1(props) {
+function Layout(props) {
   const config = useSelector(selectFuseCurrentLayoutConfig);
   const appContext = useContext(AppContext);
   const { routes } = appContext;
@@ -36,10 +36,10 @@ function Layout1(props) {
   return (
     <Root id="fuse-layout" config={config} className="w-full flex">
       <div className="flex flex-auto min-w-0">
-        <NavbarWrapperLayout1 />
+        <NavbarWrapper />
 
         <main id="fuse-main" className="flex flex-col flex-auto min-h-full min-w-0 relative z-10">
-          <ToolbarLayout1 className={config.toolbar.style === 'fixed' && 'sticky top-0'} />
+          <Toolbar className={config.toolbar.style === 'fixed' && 'sticky top-0'} />
 
           <div className="flex flex-col flex-auto min-h-0 relative z-10">
             <FuseDialog />
@@ -47,7 +47,7 @@ function Layout1(props) {
             {props.children}
           </div>
 
-          <FooterLayout1 className={config.footer.style === 'fixed' && 'sticky bottom-0'} />
+          <Footer className={config.footer.style === 'fixed' && 'sticky bottom-0'} />
         </main>
       </div>
       <FuseMessage />
@@ -55,4 +55,4 @@ function Layout1(props) {
   );
 }
 
-export default memo(Layout1);
+export default memo(Layout);
