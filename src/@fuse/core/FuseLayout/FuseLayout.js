@@ -39,6 +39,12 @@ const inputGlobalStyles = (
         borderRadius: 2,
         lineHeight: 1.7,
       }, */
+      ".paper-form": {
+        background:
+          theme.palette.mode === "light"
+            ? theme.palette.background.paper
+            : theme.palette.background.default,
+      },
       "table.simple tbody tr td": {
         borderColor: theme.palette.divider,
       },

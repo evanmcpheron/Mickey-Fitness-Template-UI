@@ -1,19 +1,21 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import Button from '@mui/material/Button';
-import { Link, useParams } from 'react-router-dom';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import Card from '@mui/material/Card';
-import { selectGuideCategorieseBySlug } from '../store/guideCategoriesSlice';
-import { getGuide, selectGuide } from '../store/guideSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import Button from "@mui/material/Button";
+import { Link, useParams } from "react-router-dom";
+import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Card from "@mui/material/Card";
+import { selectGuideCategorieseBySlug } from "../store/guideCategoriesSlice";
+import { getGuide, selectGuide } from "../store/guideSlice";
 
 function HelpCenterGuide() {
   const dispatch = useDispatch();
   const guide = useSelector(selectGuide);
   const routeParams = useParams();
-  const category = useSelector(selectGuideCategorieseBySlug(routeParams.categorySlug));
+  const category = useSelector(
+    selectGuideCategorieseBySlug(routeParams.categorySlug)
+  );
 
   useEffect(() => {
     const { categorySlug, guideSlug } = routeParams;
@@ -32,7 +34,7 @@ function HelpCenterGuide() {
             component={Link}
             to={-1}
             color="secondary"
-            startIcon={<FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>}
+            startIcon={<FuseSvgIcon icon="arrow-left" />}
           >
             {`Back to ${category?.title}`}
           </Button>
@@ -42,7 +44,10 @@ function HelpCenterGuide() {
           {guide.title}
         </Typography>
 
-        <Typography className="mt-8 sm:text-2xl tracking-tight" color="text.secondary">
+        <Typography
+          className="mt-8 sm:text-2xl tracking-tight"
+          color="text.secondary"
+        >
           {guide.subtitle}
         </Typography>
 
@@ -75,7 +80,9 @@ function HelpCenterGuide() {
               Removing a media from a project
             </Typography>
           </div>
-          <FuseSvgIcon className="ml-12">heroicons-outline:arrow-right</FuseSvgIcon>
+          <FuseSvgIcon className="ml-12">
+            heroicons-outline:arrow-right
+          </FuseSvgIcon>
         </Card>
       </div>
     </div>

@@ -1,52 +1,52 @@
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MenuItem from '@mui/material/MenuItem';
-import Paper from '@mui/material/Paper';
-import Popper from '@mui/material/Popper';
-import TextField from '@mui/material/TextField';
-import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
-import match from 'autosuggest-highlight/match';
-import parse from 'autosuggest-highlight/parse';
-import clsx from 'clsx';
-import _ from '@lodash';
-import { memo, useEffect, useReducer, useRef } from 'react';
-import Autosuggest from 'react-autosuggest';
-import withRouter from '@fuse/core/withRouter';
-import FuseSvgIcon from '../FuseSvgIcon';
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MenuItem from "@mui/material/MenuItem";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+import match from "autosuggest-highlight/match";
+import parse from "autosuggest-highlight/parse";
+import clsx from "clsx";
+import _ from "@lodash";
+import { memo, useEffect, useReducer, useRef } from "react";
+import Autosuggest from "react-autosuggest";
+import withRouter from "@fuse/core/withRouter";
+import FuseSvgIcon from "../FuseSvgIcon";
 
-const Root = styled('div')(({ theme }) => ({
-  '& .FuseSearch-container': {
-    position: 'relative',
+const Root = styled("div")(({ theme }) => ({
+  "& .FuseSearch-container": {
+    position: "relative",
   },
 
-  '& .FuseSearch-suggestionsContainerOpen': {
-    position: 'absolute',
+  "& .FuseSearch-suggestionsContainerOpen": {
+    position: "absolute",
     zIndex: 1,
     marginTop: theme.spacing(),
     left: 0,
     right: 0,
   },
 
-  '& .FuseSearch-suggestion': {
-    display: 'block',
+  "& .FuseSearch-suggestion": {
+    display: "block",
   },
 
-  '& .FuseSearch-suggestionsList': {
+  "& .FuseSearch-suggestionsList": {
     margin: 0,
     padding: 0,
-    listStyleType: 'none',
+    listStyleType: "none",
   },
 
-  '& .FuseSearch-input': {
-    transition: theme.transitions.create(['background-color'], {
+  "& .FuseSearch-input": {
+    transition: theme.transitions.create(["background-color"], {
       easing: theme.transitions.easing.easeInOut,
       duration: theme.transitions.duration.short,
     }),
-    '&:focus': {
+    "&:focus": {
       backgroundColor: theme.palette.background.paper,
     },
   },
@@ -56,7 +56,7 @@ function renderInputComponent(inputProps) {
   const { variant, inputRef = () => {}, ref, ...other } = inputProps;
   return (
     <div className="w-full relative">
-      {variant === 'basic' ? (
+      {variant === "basic" ? (
         // Outlined
         <>
           <TextField
@@ -67,8 +67,9 @@ function renderInputComponent(inputProps) {
                 inputRef(node);
               },
               classes: {
-                input: 'FuseSearch-input py-0 px-16 h-40 md:h-48 ltr:pr-48 rtl:pl-48',
-                notchedOutline: 'rounded-8',
+                input:
+                  "FuseSearch-input py-0 px-16 h-40 md:h-48 ltr:pr-48 rtl:pl-48",
+                notchedOutline: "rounded-8",
               },
             }}
             variant="outlined"
@@ -77,9 +78,8 @@ function renderInputComponent(inputProps) {
           <FuseSvgIcon
             className="absolute top-0 ltr:right-0 rtl:left-0 h-40 md:h-48 w-48 p-12 pointer-events-none"
             color="action"
-          >
-            heroicons-outline:search
-          </FuseSvgIcon>
+            icon="magnifying-glass"
+          />
         </>
       ) : (
         // Standard
@@ -92,7 +92,7 @@ function renderInputComponent(inputProps) {
               inputRef(node);
             },
             classes: {
-              input: 'FuseSearch-input py-0 px-16 h-48 md:h-64',
+              input: "FuseSearch-input py-0 px-16 h-48 md:h-64",
             },
           }}
           variant="standard"
@@ -143,7 +143,8 @@ function getSuggestions(value, data) {
   return inputLength === 0
     ? []
     : data.filter((suggestion) => {
-        const keep = count < 10 && match(suggestion.title, inputValue).length > 0;
+        const keep =
+          count < 10 && match(suggestion.title, inputValue).length > 0;
 
         if (keep) {
           count += 1;
@@ -158,7 +159,7 @@ function getSuggestionValue(suggestion) {
 }
 
 const initialState = {
-  searchText: '',
+  searchText: "",
   search: false,
   navigation: null,
   suggestions: [],
@@ -167,34 +168,34 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'open': {
+    case "open": {
       return {
         ...state,
         opened: true,
       };
     }
-    case 'close': {
+    case "close": {
       return {
         ...state,
         opened: false,
-        searchText: '',
+        searchText: "",
       };
     }
-    case 'setSearchText': {
+    case "setSearchText": {
       return {
         ...state,
         searchText: action.value,
       };
     }
-    case 'setNavigation': {
+    case "setNavigation": {
       return {
         ...state,
         navigation: action.value,
       };
     }
-    case 'updateSuggestions': {
+    case "updateSuggestions": {
       const suggestions = getSuggestions(action.value, state.navigation);
-      const isInputBlank = action.value.trim() === '';
+      const isInputBlank = action.value.trim() === "";
       const noSuggestions = !isInputBlank && suggestions.length === 0;
 
       return {
@@ -203,14 +204,14 @@ function reducer(state, action) {
         noSuggestions,
       };
     }
-    case 'clearSuggestions': {
+    case "clearSuggestions": {
       return {
         ...state,
         suggestions: [],
         noSuggestions: false,
       };
     }
-    case 'decrement': {
+    case "decrement": {
       return { count: state.count - 1 };
     }
     default: {
@@ -230,20 +231,20 @@ function FuseSearch(props) {
 
   useEffect(() => {
     dispatch({
-      type: 'setNavigation',
+      type: "setNavigation",
       value: navigation,
     });
   }, [navigation]);
 
   function showSearch(ev) {
     ev.stopPropagation();
-    dispatch({ type: 'open' });
-    document.addEventListener('keydown', escFunction, false);
+    dispatch({ type: "open" });
+    document.addEventListener("keydown", escFunction, false);
   }
 
   function hideSearch() {
-    dispatch({ type: 'close' });
-    document.removeEventListener('keydown', escFunction, false);
+    dispatch({ type: "close" });
+    document.removeEventListener("keydown", escFunction, false);
   }
 
   function escFunction(event) {
@@ -254,7 +255,7 @@ function FuseSearch(props) {
 
   function handleSuggestionsFetchRequested({ value }) {
     dispatch({
-      type: 'updateSuggestions',
+      type: "updateSuggestions",
       value,
     });
   }
@@ -271,13 +272,13 @@ function FuseSearch(props) {
 
   function handleSuggestionsClearRequested() {
     dispatch({
-      type: 'clearSuggestions',
+      type: "clearSuggestions",
     });
   }
 
   function handleChange(event) {
     dispatch({
-      type: 'setSearchText',
+      type: "setSearchText",
       value: event.target.value,
     });
   }
@@ -285,7 +286,8 @@ function FuseSearch(props) {
   function handleClickAway(event) {
     return (
       state.opened &&
-      (!suggestionsNode.current || !suggestionsNode.current.contains(event.target)) &&
+      (!suggestionsNode.current ||
+        !suggestionsNode.current.contains(event.target)) &&
       hideSearch()
     );
   }
@@ -302,9 +304,12 @@ function FuseSearch(props) {
   };
 
   switch (props.variant) {
-    case 'basic': {
+    case "basic": {
       return (
-        <div className={clsx('flex items-center w-full', props.className)} ref={popperNode}>
+        <div
+          className={clsx("flex items-center w-full", props.className)}
+          ref={popperNode}
+        >
           <Autosuggest
             {...autosuggestProps}
             inputProps={{
@@ -319,9 +324,9 @@ function FuseSearch(props) {
               autoFocus: false,
             }}
             theme={{
-              container: 'flex flex-1 w-full',
-              suggestionsList: 'FuseSearch-suggestionsList',
-              suggestion: 'FuseSearch-suggestion',
+              container: "flex flex-1 w-full",
+              suggestionsList: "FuseSearch-suggestionsList",
+              suggestion: "FuseSearch-suggestion",
             }}
             renderSuggestionsContainer={(options) => (
               <Popper
@@ -334,11 +339,17 @@ function FuseSearch(props) {
                   <Paper
                     className="shadow-lg rounded-8 overflow-hidden"
                     {...options.containerProps}
-                    style={{ width: popperNode.current ? popperNode.current.clientWidth : null }}
+                    style={{
+                      width: popperNode.current
+                        ? popperNode.current.clientWidth
+                        : null,
+                    }}
                   >
                     {options.children}
                     {state.noSuggestions && (
-                      <Typography className="px-16 py-12">{props.noResults}</Typography>
+                      <Typography className="px-16 py-12">
+                        {props.noResults}
+                      </Typography>
                     )}
                   </Paper>
                 </div>
@@ -348,9 +359,9 @@ function FuseSearch(props) {
         </div>
       );
     }
-    case 'full': {
+    case "full": {
       return (
-        <Root className={clsx('flex', props.className)}>
+        <Root className={clsx("flex", props.className)}>
           <Tooltip title="Click to search" placement="bottom">
             <div
               onClick={showSearch}
@@ -365,8 +376,14 @@ function FuseSearch(props) {
 
           {state.opened && (
             <ClickAwayListener onClickAway={handleClickAway}>
-              <Paper className="absolute left-0 right-0 top-0 h-full z-9999 shadow-0" square>
-                <div className="flex items-center w-full h-full" ref={popperNode}>
+              <Paper
+                className="absolute left-0 right-0 top-0 h-full z-9999 shadow-0"
+                square
+              >
+                <div
+                  className="flex items-center w-full h-full"
+                  ref={popperNode}
+                >
                   <Autosuggest
                     {...autosuggestProps}
                     inputProps={{
@@ -379,9 +396,9 @@ function FuseSearch(props) {
                       autoFocus: true,
                     }}
                     theme={{
-                      container: 'flex flex-1 w-full',
-                      suggestionsList: 'FuseSearch-suggestionsList',
-                      suggestion: 'FuseSearch-suggestion',
+                      container: "flex flex-1 w-full",
+                      suggestionsList: "FuseSearch-suggestionsList",
+                      suggestion: "FuseSearch-suggestion",
                     }}
                     renderSuggestionsContainer={(options) => (
                       <Popper
@@ -396,19 +413,27 @@ function FuseSearch(props) {
                             square
                             {...options.containerProps}
                             style={{
-                              width: popperNode.current ? popperNode.current.clientWidth : null,
+                              width: popperNode.current
+                                ? popperNode.current.clientWidth
+                                : null,
                             }}
                           >
                             {options.children}
                             {state.noSuggestions && (
-                              <Typography className="px-16 py-12">{props.noResults}</Typography>
+                              <Typography className="px-16 py-12">
+                                {props.noResults}
+                              </Typography>
                             )}
                           </Paper>
                         </div>
                       </Popper>
                     )}
                   />
-                  <IconButton onClick={hideSearch} className="mx-8" size="large">
+                  <IconButton
+                    onClick={hideSearch}
+                    className="mx-8"
+                    size="large"
+                  >
                     <FuseSvgIcon>heroicons-outline:x</FuseSvgIcon>
                   </IconButton>
                 </div>
@@ -429,12 +454,12 @@ FuseSearch.defaultProps = {
   navigation: [],
   trigger: (
     <IconButton className="w-40 h-40" size="large">
-      <FuseSvgIcon>heroicons-outline:search</FuseSvgIcon>
+      <FuseSvgIcon icon="magnifying-glass" />
     </IconButton>
   ),
-  variant: 'full',
-  placeholder: 'Search',
-  noResults: 'No results..',
+  variant: "full",
+  placeholder: "Search",
+  noResults: "No results..",
 };
 
 export default withRouter(memo(FuseSearch));

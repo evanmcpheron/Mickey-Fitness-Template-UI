@@ -20,7 +20,7 @@ const schema = yup.object().shape({
     .required("You must enter a email"),
 });
 
-function HelpCenterSupport() {
+const HelpCenterSupport = () => {
   const { control, handleSubmit, watch, formState } = useForm({
     mode: "onChange",
     defaultValues,
@@ -45,9 +45,7 @@ function HelpCenterSupport() {
             component={Link}
             to="/help-center"
             color="secondary"
-            startIcon={
-              <FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>
-            }
+            startIcon={<FuseSvgIcon icon="arrow-left" />}
           >
             Back to Help Center
           </Button>
@@ -56,7 +54,7 @@ function HelpCenterSupport() {
           Contact support
         </div>
 
-        <Paper className="mt-32 sm:mt-48 p-24 pb-28 sm:p-40 sm:pb-28 rounded-2xl">
+        <Paper className="paper-form mt-32 sm:mt-48 p-24 pb-28 sm:p-40 sm:pb-28 rounded-2xl">
           <form onSubmit={handleSubmit(onSubmit)} className="px-0 sm:px-24">
             <div className="mb-24">
               <Typography className="text-2xl font-bold tracking-tight">
@@ -159,6 +157,6 @@ function HelpCenterSupport() {
       </div>
     </div>
   );
-}
+};
 
 export default HelpCenterSupport;

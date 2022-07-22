@@ -1,17 +1,19 @@
-import Button from '@mui/material/Button';
-import { Link, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import { getGuides, selectGuides } from '../store/guidesSlice';
-import { selectGuideCategorieseBySlug } from '../store/guideCategoriesSlice';
-import GuideListMenu from './GuideListMenu';
+import Button from "@mui/material/Button";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
+import { getGuides, selectGuides } from "../store/guidesSlice";
+import { selectGuideCategorieseBySlug } from "../store/guideCategoriesSlice";
+import GuideListMenu from "./GuideListMenu";
 
 function GuideCategory() {
   const dispatch = useDispatch();
   const routeParams = useParams();
   const guides = useSelector(selectGuides);
-  const category = useSelector(selectGuideCategorieseBySlug(routeParams.categorySlug));
+  const category = useSelector(
+    selectGuideCategorieseBySlug(routeParams.categorySlug)
+  );
 
   useEffect(() => {
     dispatch(getGuides(routeParams.categorySlug));
@@ -25,7 +27,7 @@ function GuideCategory() {
             component={Link}
             to={-1}
             color="secondary"
-            startIcon={<FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>}
+            startIcon={<FuseSvgIcon icon="arrow-left" />}
           >
             Back to Guides & Resources
           </Button>

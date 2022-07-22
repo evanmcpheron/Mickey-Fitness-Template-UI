@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import Typography from '@mui/material/Typography';
-import { getFaqs, selectGroupedFaqs } from '../store/faqsSlice';
-import { getFaqCategories } from '../store/faqCategoriesSlice';
-import FaqList from './FaqList';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
+import Typography from "@mui/material/Typography";
+import { getFaqs, selectGroupedFaqs } from "../store/faqsSlice";
+import { getFaqCategories } from "../store/faqCategoriesSlice";
+import FaqList from "./FaqList";
 
 function HelpCenterFaqs() {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function HelpCenterFaqs() {
             component={Link}
             to={-1}
             color="secondary"
-            startIcon={<FuseSvgIcon>heroicons-outline:arrow-narrow-left</FuseSvgIcon>}
+            startIcon={<FuseSvgIcon icon="arrow-left" />}
           >
             Back to Help Center
           </Button>

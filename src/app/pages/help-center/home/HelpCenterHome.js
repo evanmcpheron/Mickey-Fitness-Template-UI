@@ -73,9 +73,7 @@ function HelpCenterHome() {
               fullWidth
               startAdornment={
                 <InputAdornment position="start">
-                  <FuseSvgIcon color="disabled">
-                    heroicons-solid:search
-                  </FuseSvgIcon>
+                  <FuseSvgIcon color="disabled" icon="magnifying-glass" />
                 </InputAdornment>
               }
               inputProps={{
@@ -131,9 +129,7 @@ function HelpCenterHome() {
               <Typography color="secondary" className="mx-8">
                 Go to FAQs
               </Typography>
-              <FuseSvgIcon size={20} color="secondary">
-                heroicons-solid:arrow-narrow-right
-              </FuseSvgIcon>
+              <FuseSvgIcon size={20} color="secondary" icon="arrow-right" />
             </Box>
           </Card>
 
@@ -161,9 +157,7 @@ function HelpCenterHome() {
               <Typography color="secondary" className="mx-8">
                 Check guides
               </Typography>
-              <FuseSvgIcon size={20} color="secondary">
-                heroicons-solid:arrow-narrow-right
-              </FuseSvgIcon>
+              <FuseSvgIcon size={20} color="secondary" icon="arrow-right" />
             </Box>
           </Card>
 
@@ -191,9 +185,7 @@ function HelpCenterHome() {
               <Typography color="secondary" className="mx-8">
                 Contact us
               </Typography>
-              <FuseSvgIcon size={20} color="secondary">
-                heroicons-solid:arrow-narrow-right
-              </FuseSvgIcon>
+              <FuseSvgIcon size={20} color="secondary" icon="arrow-right" />
             </Box>
           </Card>
         </div>
