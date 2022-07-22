@@ -40,7 +40,7 @@ const FuseSvgIcon = forwardRef((props, ref) => {
       sx={props.sx}
       color={props.color}
     >
-      <i className={icon ? `fa-regular fa-${icon}` : 'fa-regular fa-skull-crossbones'} />
+      <i className={icon ? `fa-light fa-${icon}` : 'fa-regular fa-skull-crossbones'} />
     </Root>
   );
 });

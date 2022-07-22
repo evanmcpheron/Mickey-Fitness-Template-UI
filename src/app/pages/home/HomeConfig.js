@@ -1,4 +1,4 @@
-import Home from "./Home";
+import Home from './HomePage';
 
 const HomeConfig = {
   settings: {
@@ -8,7 +8,7 @@ const HomeConfig = {
   },
   routes: [
     {
-      path: "",
+      path: '',
       element: <Home />,
     },
   ],

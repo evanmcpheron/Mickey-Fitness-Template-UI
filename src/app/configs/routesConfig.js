@@ -12,6 +12,7 @@ import HelpCenterAppConfig from '../pages/help-center/HelpCenterAppConfig';
 import FileManagerAppConfig from '../pages/file-manager/FileManagerAppConfig';
 import ErrorConfig from '../pages/404/ErrorConfig';
 import CoachesConfig from '../pages/coaches/CoachesConfig';
+import CheckoutConfig from '../pages/checkoutForm/CheckoutConfig';
 
 const routeConfigs = [
   SignOutConfig,
@@ -24,6 +25,7 @@ const routeConfigs = [
   FileManagerAppConfig,
   ErrorConfig,
   CoachesConfig,
+  CheckoutConfig,
 ];
 
 const routes = [

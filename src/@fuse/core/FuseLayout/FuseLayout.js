@@ -1,24 +1,24 @@
-import { useDeepCompareEffect } from "@fuse/hooks";
-import _ from "@lodash";
-import AppContext from "app/AppContext";
+import { useDeepCompareEffect } from '@fuse/hooks';
+import _ from '@lodash';
+import AppContext from 'app/AppContext';
 import {
   generateSettings,
   selectFuseCurrentSettings,
   selectFuseDefaultSettings,
   setSettings,
-} from "app/store/fuse/settingsSlice";
-import { memo, useCallback, useContext, useMemo, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { matchRoutes, useLocation } from "react-router-dom";
-import GlobalStyles from "@mui/material/GlobalStyles";
-import { alpha } from "@mui/material/styles";
+} from 'app/store/fuse/settingsSlice';
+import { memo, useCallback, useContext, useMemo, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { matchRoutes, useLocation } from 'react-router-dom';
+import GlobalStyles from '@mui/material/GlobalStyles';
+import { alpha } from '@mui/material/styles';
 
 const inputGlobalStyles = (
   <GlobalStyles
     styles={(theme) => ({
       html: {
         backgroundColor: `${
-          theme.palette.mode === "light"
+          theme.palette.mode === 'light'
             ? theme.palette.background.default
             : theme.palette.background.paper
         }!important`,
@@ -26,7 +26,7 @@ const inputGlobalStyles = (
       },
       body: {
         backgroundColor:
-          theme.palette.mode === "light"
+          theme.palette.mode === 'light'
             ? theme.palette.background.default
             : theme.palette.background.paper,
         color: theme.palette.text.primary,
@@ -39,31 +39,37 @@ const inputGlobalStyles = (
         borderRadius: 2,
         lineHeight: 1.7,
       }, */
-      ".paper-form": {
+      '.paper-form': {
         background:
-          theme.palette.mode === "light"
+          theme.palette.mode === 'light'
             ? theme.palette.background.paper
             : theme.palette.background.default,
       },
-      "table.simple tbody tr td": {
+      '.sign-out-page': {
+        background:
+          theme.palette.mode === 'light'
+            ? theme.palette.background.paper
+            : theme.palette.background.default,
+      },
+      'table.simple tbody tr td': {
         borderColor: theme.palette.divider,
       },
-      "table.simple thead tr th": {
+      'table.simple thead tr th': {
         borderColor: theme.palette.divider,
       },
-      "a:not([role=button]):not(.MuiButtonBase-root)": {
+      'a:not([role=button]):not(.MuiButtonBase-root)': {
         color: theme.palette.secondary.main,
-        textDecoration: "underline",
-        "&:hover": {},
+        textDecoration: 'underline',
+        '&:hover': {},
       },
-      "a.link, a:not([role=button])[target=_blank]": {
+      'a.link, a:not([role=button])[target=_blank]': {
         background: alpha(theme.palette.secondary.main, 0.2),
-        color: "inherit",
+        color: 'inherit',
         borderBottom: `1px solid ${theme.palette.divider}`,
-        textDecoration: "none",
-        "&:hover": {
+        textDecoration: 'none',
+        '&:hover': {
           background: alpha(theme.palette.secondary.main, 0.3),
-          textDecoration: "none",
+          textDecoration: 'none',
         },
       },
       '[class^="border"]': {
@@ -79,18 +85,14 @@ const inputGlobalStyles = (
         borderColor: theme.palette.divider,
       },
 
-      "::-webkit-scrollbar-thumb": {
+      '::-webkit-scrollbar-thumb': {
         boxShadow: `inset 0 0 0 20px ${
-          theme.palette.mode === "light"
-            ? "rgba(0, 0, 0, 0.24)"
-            : "rgba(255, 255, 255, 0.24)"
+          theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.24)' : 'rgba(255, 255, 255, 0.24)'
         }`,
       },
-      "::-webkit-scrollbar-thumb:active": {
+      '::-webkit-scrollbar-thumb:active': {
         boxShadow: `inset 0 0 0 20px ${
-          theme.palette.mode === "light"
-            ? "rgba(0, 0, 0, 0.37)"
-            : "rgba(255, 255, 255, 0.37)"
+          theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.37)' : 'rgba(255, 255, 255, 0.37)'
         }`,
       },
     })}
@@ -152,10 +154,7 @@ function FuseLayout(props) {
 
   // console.warn('::FuseLayout:: rendered');
 
-  const Layout = useMemo(
-    () => layout[settings.layout.style],
-    [layout, settings.layout.style]
-  );
+  const Layout = useMemo(() => layout[settings.layout.style], [layout, settings.layout.style]);
 
   return _.isEqual(newSettings.current, settings) ? (
     <>

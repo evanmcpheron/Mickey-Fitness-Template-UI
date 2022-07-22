@@ -1,21 +1,20 @@
-import Typography from "@mui/material/Typography";
-import { motion } from "framer-motion";
-import { Box } from "@mui/system";
-import { useDispatch, useSelector } from "react-redux";
-import { lighten, ThemeProvider } from "@mui/material/styles";
-import { selectMainThemeDark } from "app/store/fuse/settingsSlice";
-import { OutlinedInput } from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
-import Card from "@mui/material/Card";
-import { Link } from "react-router-dom";
-import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
-import { useEffect } from "react";
-import { getFaqsMost, selectFaqsMost } from "../store/faqsMostSlice";
-import FaqList from "../faqs/FaqList";
+import Typography from '@mui/material/Typography';
+import { motion } from 'framer-motion';
+import { Box } from '@mui/system';
+import { useDispatch, useSelector } from 'react-redux';
+import { lighten, ThemeProvider } from '@mui/material/styles';
+import { selectMainThemeDark } from 'app/store/fuse/settingsSlice';
+import { OutlinedInput } from '@mui/material';
+import InputAdornment from '@mui/material/InputAdornment';
+import Card from '@mui/material/Card';
+import { Link } from 'react-router-dom';
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { useEffect } from 'react';
+import { getFaqsMost, selectFaqsMost } from '../store/faqsMostSlice';
+import FaqList from '../faqs/FaqList';
 
 function HelpCenterHome() {
   const mainThemeDark = useSelector(selectMainThemeDark);
-  console.log("=>(HelpCenterHome.js:18) mainThemeDark", mainThemeDark);
   const dispatch = useDispatch();
   const faqsMost = useSelector(selectFaqsMost);
 
@@ -29,24 +28,17 @@ function HelpCenterHome() {
         <Box
           className="relative pt-32 pb-112 px-16 sm:pt-80 sm:pb-192 sm:px-64 overflow-hidden"
           sx={{
-            backgroundColor: "primary.dark",
-            color: (theme) =>
-              theme.palette.getContrastText(theme.palette.primary.main),
+            backgroundColor: 'primary.dark',
+            color: (theme) => theme.palette.getContrastText(theme.palette.primary.main),
           }}
         >
           <div className="flex flex-col items-center justify-center  mx-auto w-full">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0 } }}
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0 } }}>
               <Typography color="inherit" className="text-18 font-semibold">
                 HELP CENTER
               </Typography>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0 } }}
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0 } }}>
               <Typography className="mt-4 text-32 sm:text-48 font-extrabold tracking-tight leading-tight text-center">
                 How can we help you today?
               </Typography>
@@ -59,8 +51,8 @@ function HelpCenterHome() {
                 color="text.secondary"
                 className="mt-12 sm:text-20 text-center tracking-tight"
               >
-                Search for a topic or question, check out our FAQs and guides,
-                contact us for detailed support
+                Search for a topic or question, check out our FAQs and guides, contact us for
+                detailed support
               </Typography>
             </motion.div>
             <OutlinedInput
@@ -77,7 +69,7 @@ function HelpCenterHome() {
                 </InputAdornment>
               }
               inputProps={{
-                "aria-label": "Search",
+                'aria-label': 'Search',
               }}
             />
           </div>
@@ -121,7 +113,7 @@ function HelpCenterHome() {
               className="flex items-center justify-center py-16 px-32"
               sx={{
                 backgroundColor: (theme) =>
-                  theme.palette.mode === "light"
+                  theme.palette.mode === 'light'
                     ? lighten(theme.palette.background.default, 0.4)
                     : lighten(theme.palette.background.default, 0.02),
               }}
@@ -149,7 +141,7 @@ function HelpCenterHome() {
               className="flex items-center justify-center py-16 px-32"
               sx={{
                 backgroundColor: (theme) =>
-                  theme.palette.mode === "light"
+                  theme.palette.mode === 'light'
                     ? lighten(theme.palette.background.default, 0.4)
                     : lighten(theme.palette.background.default, 0.02),
               }}
@@ -177,7 +169,7 @@ function HelpCenterHome() {
               className="flex items-center justify-center py-16 px-32"
               sx={{
                 backgroundColor: (theme) =>
-                  theme.palette.mode === "light"
+                  theme.palette.mode === 'light'
                     ? lighten(theme.palette.background.default, 0.4)
                     : lighten(theme.palette.background.default, 0.02),
               }}
@@ -194,12 +186,8 @@ function HelpCenterHome() {
       <Typography className="mt-96 px-16 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">
         Most frequently asked questions
       </Typography>
-      <Typography
-        className="mt-8 px-16 text-xl text-center"
-        color="text.secondary"
-      >
-        Here are the most frequently asked questions you may check before
-        getting started
+      <Typography className="mt-8 px-16 text-xl text-center" color="text.secondary">
+        Here are the most frequently asked questions you may check before getting started
       </Typography>
 
       <div className="flex flex-col w-full px-16 items-center my-48">

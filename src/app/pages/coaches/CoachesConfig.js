@@ -1,4 +1,4 @@
-import Coaches from './Coahces';
+import Coaches from './CoachesPage';
 
 const CoachesConfig = {
   settings: {
