@@ -7,7 +7,7 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFuseCurrentLayoutConfig, selectToolbarTheme } from 'app/store/fuse/settingsSlice';
 import { selectFuseNavbar } from 'app/store/fuse/navbarSlice';
-import DarkModeToggle from 'app/theme-layouts/shared-components/DarkModeToggle';
+import DarkModeToggle from '../../shared-components/DarkModeToggle';
 import FullScreenToggle from '../../shared-components/FullScreenToggle';
 import NavbarToggleButton from '../../shared-components/NavbarToggleButton';
 import UserMenu from '../../shared-components/UserMenu';

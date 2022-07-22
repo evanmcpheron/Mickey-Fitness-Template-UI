@@ -12,7 +12,7 @@ const initMode = () => {
 const settingsConfig = {
   layout: {
     style: 'layout',
-    config: {}, // checkout default layout configs at app/theme-layouts for example  app/theme-layouts/layout/LayoutConfig.js
+    config: {}, // checkout default layout configs at app/theme for example  app/theme/layout/LayoutConfig.js
   },
   customScrollbars: true,
   direction: i18n.dir(i18n.options.lng) || 'ltr', // rtl, ltr

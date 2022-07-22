@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Button from '@mui/material/Button';
-import NotificationTemplate from 'app/theme-layouts/shared-components/notificationPanel/NotificationTemplate';
+import NotificationTemplate from 'app/theme/shared-components/notificationPanel/NotificationTemplate';
 import NotificationModel from './model/NotificationModel';
 import NotificationCard from './NotificationCard';
 import {

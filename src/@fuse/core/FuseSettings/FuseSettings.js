@@ -1,7 +1,7 @@
 import { useDebounce, usePrevious } from '@fuse/hooks';
 import { styled } from '@mui/material/styles';
 import { Controller, useForm } from 'react-hook-form';
-import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
+import themeLayoutConfigs from 'app/theme/themeLayoutConfigs';
 import _ from '@lodash';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';

@@ -4,7 +4,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { useDispatch, useSelector } from 'react-redux';
 import { navbarCloseMobile, selectFuseNavbar } from 'app/store/fuse/navbarSlice';
 import { selectFuseCurrentLayoutConfig } from 'app/store/fuse/settingsSlice';
-import NavbarContent from 'app/theme-layouts/Layout/components/navbar/NavbarContent';
+import NavbarContent from './NavbarContent';
 
 const navbarWidth = 280;
 

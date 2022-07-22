@@ -8,11 +8,11 @@ import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { selectCurrentLanguageDirection } from 'app/store/i18nSlice';
 import { selectUser } from 'app/store/userSlice';
-import body from 'app/theme-layouts/body';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
 import FuseAuthorization from '@fuse/core/FuseAuthorization';
 import settingsConfig from 'app/configs/settingsConfig';
 import axios from 'axios';
+import body from './theme/body';
 import withAppProviders from './withAppProviders';
 import { AuthProvider } from './auth/AuthContext';
 /**

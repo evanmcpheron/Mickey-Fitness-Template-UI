@@ -9,9 +9,9 @@ import {
   mustHaveThemeOptions,
 } from '@fuse/default-settings';
 import settingsConfig from 'app/configs/settingsConfig';
-import themeLayoutConfigs from 'app/theme-layouts/themeLayoutConfigs';
 import { setUser, updateUserSettings } from 'app/store/userSlice';
 import { darkPaletteText, lightPaletteText } from 'app/configs/themesConfig';
+import themeLayoutConfigs from '../../theme/themeLayoutConfigs';
 
 export const changeFuseTheme = (theme) => (dispatch, getState) => {
   const { fuse } = getState();
