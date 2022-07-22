@@ -6,6 +6,7 @@ import { Suspense } from 'react';
  * React Suspense defaults
  * For to Avoid Repetition
  */ function FuseSuspense(props) {
+  console.log('🚀 ~ file: FuseSuspense.js ~ line 9 ~ props: ', props.loading);
   return <Suspense fallback={<FuseLoading {...props.loadingProps} />}>{props.children}</Suspense>;
 }
 
