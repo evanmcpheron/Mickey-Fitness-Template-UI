@@ -8,20 +8,18 @@ import FileManagerAppConfig from '../pages/file-manager/FileManagerAppConfig';
 import ErrorConfig from '../pages/404/ErrorConfig';
 import CoachesConfig from '../pages/coaches/CoachesConfig';
 import CheckoutConfig from '../pages/checkoutForm/CheckoutConfig';
-import ProfileConfig from '../pages/profile/ProfileConfig';
 import AuthConfig from '../pages/auth/AuthConfig';
-import SettingsConfig from '../pages/profile/SettingsConfig';
+import ProfileConfig from '../pages/profile/ProfileConfig';
 
 const routeConfigs = [
   ...AuthConfig,
-  ProfileConfig,
+  ...ProfileConfig,
   HomeConfig,
   HelpCenterAppConfig,
   FileManagerAppConfig,
   ErrorConfig,
   CoachesConfig,
   CheckoutConfig,
-  SettingsConfig,
 ];
 
 const routes = [

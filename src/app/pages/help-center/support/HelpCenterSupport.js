@@ -1,37 +1,40 @@
-import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import { Controller, useForm } from "react-hook-form";
-import _ from "@lodash";
-import TextField from "@mui/material/TextField";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import { Controller, useForm } from 'react-hook-form';
+import _ from '@lodash';
+import TextField from '@mui/material/TextField';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import axios from 'axios';
+import { proxy } from '../../../helper/proxy';
 
-const defaultValues = { name: "", email: "", subject: "", message: "" };
+const defaultValues = { name: '', from: '', subject: '', message: '' };
 const schema = yup.object().shape({
-  name: yup.string().required("You must enter a name"),
-  subject: yup.string().required("You must enter a subject"),
-  message: yup.string().required("You must enter a message"),
-  email: yup
-    .string()
-    .email("You must enter a valid email")
-    .required("You must enter a email"),
+  name: yup.string().required('You must enter a name'),
+  subject: yup.string().required('You must enter a subject'),
+  message: yup.string().required('You must enter a message'),
+  from: yup.string().email('You must enter a valid email').required('You must enter a email'),
 });
 
 const HelpCenterSupport = () => {
   const { control, handleSubmit, watch, formState } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues,
     resolver: yupResolver(schema),
   });
   const { isValid, dirtyFields, errors } = formState;
   const form = watch();
 
-  function onSubmit(data) {
+  const onSubmit = (data) => {
     console.log(data);
-  }
+    axios.post(`${proxy()}/v1/global/send-email`, data).then((res) => {
+      console.log('🚀 ~ file: HelpCenterSupport.js ~ line 43 ~ res: ', res);
+      //  SEND TO HELP CENTER PAGE AND SEND THEM A CONFIRMATION EMAIL
+    });
+  };
 
   if (_.isEmpty(form)) {
     return null;
@@ -61,8 +64,8 @@ const HelpCenterSupport = () => {
                 Submit your request
               </Typography>
               <Typography color="text.secondary">
-                Your request will be processed and our support staff will get
-                back to you in 24 hours.
+                Your request will be processed and our support staff will get back to you in 24
+                hours.
               </Typography>
             </div>
             <div className="space-y-32">
@@ -87,7 +90,7 @@ const HelpCenterSupport = () => {
 
               <Controller
                 control={control}
-                name="email"
+                name="from"
                 render={({ field }) => (
                   <TextField
                     {...field}
@@ -96,8 +99,8 @@ const HelpCenterSupport = () => {
                     placeholder="Email"
                     variant="outlined"
                     fullWidth
-                    error={!!errors.email}
-                    helperText={errors?.email?.message}
+                    error={!!errors.from}
+                    helperText={errors?.from?.message}
                     required
                   />
                 )}
@@ -150,7 +153,7 @@ const HelpCenterSupport = () => {
               disabled={_.isEmpty(dirtyFields) || !isValid}
               onClick={handleSubmit(onSubmit)}
             >
-              Save
+              Send
             </Button>
           </div>
         </Paper>

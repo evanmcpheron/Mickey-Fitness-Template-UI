@@ -1,19 +1,6 @@
-import { lazy } from 'react';
+import ProfileUserConfig from './ProfileUserConfig';
+import SettingsConfig from './SettingsConfig';
 
-const ProfileApp = lazy(() => import('./ProfilePage'));
-
-const ProfileConfig = {
-  settings: {
-    layout: {
-      config: {},
-    },
-  },
-  routes: [
-    {
-      path: 'profile/:userId',
-      element: <ProfileApp />,
-    },
-  ],
-};
+const ProfileConfig = [ProfileUserConfig, SettingsConfig];
 
 export default ProfileConfig;
