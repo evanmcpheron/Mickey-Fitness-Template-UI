@@ -7,7 +7,6 @@ function BrowserRouter({ basename, children, window }) {
     action: history.action,
     location: history.location,
   });
-  console.log('🚀 ~ file: filename ~ line 10 ~ state: ', history);
 
   useLayoutEffect(() => history.listen(setState), [history]);
 

@@ -8,9 +8,9 @@ import { s3Proxy } from '../../helper/proxy';
 import Ratings from '../../theme/shared-components/Ratings';
 
 const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
-  function handleTabChange(event, value) {
-    console.log('🚀 ~ file: ProfileHeader.js ~ line 99 ~ value: ', value);
+  console.log('🚀 ~ file: ProfileHeader.js ~ line 11 ~ user: ', user);
 
+  function handleTabChange(event, value) {
     setSelectedTab(value);
   }
   return (
@@ -91,6 +91,13 @@ const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
               disableRipple
               label="REVIEWS"
             />
+            {user.isMe ? (
+              <Tab
+                className="text-14 font-semibold min-h-40 min-w-64 mx-4 px-12 "
+                disableRipple
+                label="SETTINGS"
+              />
+            ) : null}
           </Tabs>
         </div>
       </div>

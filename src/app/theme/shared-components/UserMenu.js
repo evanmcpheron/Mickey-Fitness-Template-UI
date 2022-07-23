@@ -84,15 +84,15 @@ const UserMenu = (props) => {
           <>
             <MenuItem component={Link} to="/profile/me" onClick={userMenuClose} role="button">
               <ListItemIcon className="min-w-40">
-                <FuseSvgIcon>heroicons-outline:user-circle</FuseSvgIcon>
+                <FuseSvgIcon icon="user" />
               </ListItemIcon>
               <ListItemText primary="My Profile" />
             </MenuItem>
             <MenuItem component={Link} to="/apps/mailbox" onClick={userMenuClose} role="button">
               <ListItemIcon className="min-w-40">
-                <FuseSvgIcon>heroicons-outline:mail-open</FuseSvgIcon>
+                <FuseSvgIcon icon="gear" />
               </ListItemIcon>
-              <ListItemText primary="Inbox" />
+              <ListItemText primary="Settings" />
             </MenuItem>
             <MenuItem
               component={NavLink}
@@ -102,7 +102,7 @@ const UserMenu = (props) => {
               }}
             >
               <ListItemIcon className="min-w-40">
-                <FuseSvgIcon>heroicons-outline:logout</FuseSvgIcon>
+                <FuseSvgIcon icon="right-from-bracket" />
               </ListItemIcon>
               <ListItemText primary="Sign out" />
             </MenuItem>

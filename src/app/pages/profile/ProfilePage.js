@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'app/store/userSlice';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import AboutTab from './tabs/AboutTab';
 import ReviewTab from './tabs/ReviewTab';
 import StoreTab from './tabs/StoreTab';
@@ -23,23 +23,38 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 }));
 
 function ProfilePage() {
-  const params = useParams();
-  console.log('🚀 ~ file: ProfilePage.js ~ line 27 ~ params: ', params);
+  const { userId } = useParams();
+  const [isMe] = useState(userId === 'me' ?? true);
+  console.log('🚀 ~ file: ProfilePage.js ~ line 28 ~ isMe: ', isMe);
   const [selectedTab, setSelectedTab] = useState(0);
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
 
-  const user = useSelector(selectUser);
+  const me = useSelector(selectUser);
+  const user = {
+    data: {
+      displayName: 'admin@admin.com',
+      photoURL: 'default-profile.jpg',
+      email: 'admin@admin.com',
+    },
+    role: 'admin',
+    uuid: '62d34d624d4642c767bfee0a',
+  };
 
   return (
     <Root
       header={
-        <ProfileHeader user={user} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        <ProfileHeader
+          user={isMe ? { isMe: true, ...me } : user}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+        />
       }
       content={
         <div className="flex flex-auto justify-center w-full max-w-5xl mx-auto p-24 sm:p-32">
-          {selectedTab === 0 && <StoreTab />}
-          {selectedTab === 1 && <AboutTab />}
-          {selectedTab === 2 && <ReviewTab />}
+          {selectedTab === 0 && <StoreTab user={isMe ? { isMe: true, ...me } : user} />}
+          {selectedTab === 1 && <AboutTab user={isMe ? { isMe: true, ...me } : user} />}
+          {selectedTab === 2 && <ReviewTab user={isMe ? { isMe: true, ...me } : user} />}
+          {selectedTab === 3 && <Navigate to="/settings" />}
         </div>
       }
       scroll={isMobile ? 'normal' : 'page'}

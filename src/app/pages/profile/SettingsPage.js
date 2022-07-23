@@ -1,4 +1,5 @@
 import { styled } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 import FusePageSimple from '@fuse/core/FusePageSimple';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
@@ -14,7 +15,9 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-const CoachesPage = (props) => {
+const SettingsPage = (props) => {
+  const { t } = useTranslation('examplePage');
+
   return (
     <Root
       header={
@@ -22,10 +25,10 @@ const CoachesPage = (props) => {
           <h4>HERO BAR GOES HERE (SLIDER THING)</h4>
         </div>
       }
-      content={<div className="p-24">COACHES</div>}
+      content={<div className="p-24">SETTINGS</div>}
       scroll="content"
     />
   );
 };
 
-export default CoachesPage;
+export default SettingsPage;

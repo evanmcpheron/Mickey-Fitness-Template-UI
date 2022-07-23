@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function StoreTab() {
+const StoreTab = ({ user }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -10,8 +10,9 @@ function StoreTab() {
   // if (!data) {
   //   return <FuseLoading />;
   // }
+  console.log('🚀 ~ file: StoreTab.js ~ line 16 ~ user: ', user);
 
   return <div>STORE TAB</div>;
-}
+};
 
 export default StoreTab;
