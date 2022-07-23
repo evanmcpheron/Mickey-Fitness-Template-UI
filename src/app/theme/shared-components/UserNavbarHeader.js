@@ -3,6 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'app/store/userSlice';
+import { s3Proxy } from '../../helper/proxy';
 
 const Root = styled('div')(({ theme }) => ({
   '& .username, & .email': {
@@ -37,7 +38,7 @@ function UserNavbarHeader(props) {
             color: 'text.secondary',
           }}
           className="avatar text-32 font-bold w-96 h-96"
-          src={`https://mickey-fitness.s3.us-west-1.amazonaws.com/${user.data.photoURL}`}
+          src={`${s3Proxy()}${user.data.photoURL}`}
           alt={user.data.displayName}
         >
           {user.data.displayName.charAt(0)}
