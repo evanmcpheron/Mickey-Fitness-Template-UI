@@ -37,7 +37,7 @@ function ItemCard(props) {
     return null;
   }
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={12} sm={6} md={4} className="sm:py-5">
       <Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden p-0">
         <Root header={<ItemCardHeader />} content={<ItemCardContent />} />
       </Paper>
