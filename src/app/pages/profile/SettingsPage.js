@@ -4,7 +4,6 @@ import FusePageSimple from '@fuse/core/FusePageSimple';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
-    backgroundColor: theme.palette.background.default,
     borderBottomWidth: 1,
     borderStyle: 'solid',
     borderColor: theme.palette.divider,

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Grid } from '@mui/material';
+import ItemCard from '../../../theme/shared-components/ecommerce/ItemCard';
 
 const StoreTab = ({ user }) => {
   const [data, setData] = useState(null);
@@ -12,7 +14,24 @@ const StoreTab = ({ user }) => {
   // }
   console.log('🚀 ~ file: StoreTab.js ~ line 16 ~ user: ', user);
 
-  return <div>STORE TAB</div>;
+  return (
+    <div>
+      <h2>STORE TAB</h2>
+      <Grid container spacing={6} className="pt-32">
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+        <ItemCard />
+      </Grid>
+    </div>
+  );
 };
 
 export default StoreTab;

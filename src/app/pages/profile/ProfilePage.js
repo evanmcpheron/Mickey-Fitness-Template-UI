@@ -12,10 +12,6 @@ import ProfileHeader from './ProfileHeader';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
-    background:
-      theme.palette.mode === 'light'
-        ? `${theme.palette.background.paper}`
-        : `${theme.palette.background.default}`,
     borderBottomWidth: 1,
     borderStyle: 'solid',
     borderColor: theme.palette.divider,
@@ -32,8 +28,10 @@ function ProfilePage() {
   const me = useSelector(selectUser);
   const user = {
     data: {
-      displayName: 'admin@admin.com',
+      displayName: 'A Different User',
+      location: 'Kansas City, KS',
       photoURL: 'default-profile.jpg',
+      coverPhoto: 'default-cover-photo.png',
       email: 'admin@admin.com',
     },
     role: 'admin',
@@ -50,7 +48,7 @@ function ProfilePage() {
         />
       }
       content={
-        <div className="flex flex-auto justify-center w-full max-w-5xl mx-auto p-24 sm:p-32">
+        <div className="flex flex-auto justify-center w-full mx-auto pt-32">
           {selectedTab === 0 && <StoreTab user={isMe ? { isMe: true, ...me } : user} />}
           {selectedTab === 1 && <AboutTab user={isMe ? { isMe: true, ...me } : user} />}
           {selectedTab === 2 && <ReviewTab user={isMe ? { isMe: true, ...me } : user} />}

@@ -14,7 +14,7 @@ const Root = styled('div')(({ theme }) => ({
   },
 
   '& .avatar': {
-    background: theme.palette.background.default,
+    background: theme.palette.background.paper,
     transition: theme.transitions.create('all', {
       duration: theme.transitions.duration.shortest,
       easing: theme.transitions.easing.easeInOut,

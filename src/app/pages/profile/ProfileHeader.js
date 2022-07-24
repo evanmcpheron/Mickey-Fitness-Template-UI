@@ -13,11 +13,12 @@ const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
   function handleTabChange(event, value) {
     setSelectedTab(value);
   }
+
   return (
     <div className="flex flex-col">
       <img
         className="h-160 lg:h-320 object-cover w-full"
-        src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+        src={`${s3Proxy()}${user.data.coverPhoto}`}
         alt="Profile Cover"
       />
 
@@ -34,8 +35,10 @@ const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
         </div>
 
         <div className="flex flex-col items-center lg:items-start mt-16 lg:mt-0 lg:ml-32">
-          <Typography className="text-lg font-bold leading-none">Brian Hughes</Typography>
-          <Typography color="text.secondary">London, UK</Typography>
+          <Typography className="text-lg font-bold leading-none">
+            {user.data.displayName}
+          </Typography>
+          <Typography color="text.secondary">{user.data.location}</Typography>
         </div>
 
         <div className="hidden lg:flex h-32 mx-32 border-l-2" />

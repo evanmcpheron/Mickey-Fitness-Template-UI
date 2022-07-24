@@ -51,6 +51,10 @@ const Root = styled('div')(({ theme, ...props }) => ({
     display: 'flex',
     flex: '0 0 auto',
     backgroundSize: 'cover',
+    backgroundColor:
+      theme.palette.mode === 'light'
+        ? theme.palette.background.paper
+        : theme.palette.background.default,
   },
 
   '& .FusePageSimple-topBg': {

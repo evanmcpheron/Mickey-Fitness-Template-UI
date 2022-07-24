@@ -41,7 +41,6 @@ const UserMenu = (props) => {
             {(!user.role || (Array.isArray(user.role) && user.role.length === 0)) && 'Guest'}
           </Typography>
         </div>
-
         {user.data.photoURL ? (
           <Avatar className="md:mx-4" alt="user photo" src={`${s3Proxy()}${user.data.photoURL}`} />
         ) : (
