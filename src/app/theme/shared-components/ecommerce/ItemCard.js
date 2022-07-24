@@ -3,6 +3,8 @@ import { memo, useEffect, useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import { Grid } from '@mui/material';
 import FusePageSimple from '@fuse/core/FusePageSimple/FusePageSimple';
+import ItemCardHeader from './ItemCardComponents/ItemCardHeader';
+import ItemCardContent from './ItemCardComponents/ItemCardContent';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
@@ -37,29 +39,7 @@ function ItemCard(props) {
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden p-0">
-        <Root
-          header={
-            <div>
-              <img
-                src="https://atlantisstrength.com/app/uploads/2022/02/gym-equipment-scaled-1920x1080.jpg"
-                alt={"coach's service"}
-              />
-              <div className="p-28 pt-10 pb-10">
-                <h2 sx={{ borderColor: 'red', borderWidth: '2px', borderStyle: 'solid' }}>
-                  Workout Plan
-                </h2>
-              </div>
-            </div>
-          }
-          content={
-            <ul className="p-28 pt-10">
-              <li>Item</li>
-              <li>Item</li>
-              <li>Item</li>
-              <li>Item</li>
-            </ul>
-          }
-        />
+        <Root header={<ItemCardHeader />} content={<ItemCardContent />} />
       </Paper>
     </Grid>
   );
