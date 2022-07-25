@@ -1,15 +1,13 @@
 import { motion } from 'framer-motion';
-import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import { s3Proxy } from '../../helper/proxy';
 import Ratings from '../../theme/shared-components/Ratings';
+import UserAvatar from '../../theme/shared-components/UserAvatar';
 
 const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
-  console.log('🚀 ~ file: ProfileHeader.js ~ line 11 ~ user: ', user);
-
   function handleTabChange(event, value) {
     setSelectedTab(value);
   }
@@ -18,18 +16,21 @@ const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
     <div className="flex flex-col">
       <img
         className="h-160 lg:h-320 object-cover w-full"
-        src={`${s3Proxy()}${user.data.coverPhoto}`}
+        src={
+          user.data.coverPhoto === 'default-cover-photo.png'
+            ? `${s3Proxy()}/user/${user.data.coverPhoto}`
+            : `${s3Proxy()}/user/${user.uuid}/${user.data.coverPhoto}`
+        }
         alt="Profile Cover"
       />
 
       <div className="flex flex-col flex-0 lg:flex-row items-center max-w-5xl w-full mx-auto px-32 lg:h-72">
         <div className="-mt-96 lg:-mt-88 rounded-full">
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1, transition: { delay: 0.1 } }}>
-            <Avatar
+            <UserAvatar
               sx={{ borderColor: 'background.paper' }}
               className="w-128 h-128 border-4"
-              src={`${s3Proxy()}${user.data.photoURL}`}
-              alt="User avatar"
+              user={user}
             />
           </motion.div>
         </div>

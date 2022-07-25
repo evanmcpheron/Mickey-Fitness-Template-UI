@@ -1,18 +1,18 @@
-import { memo } from "react";
-import Box from "@mui/material/Box";
-import { s3Proxy } from "src/app/helper/proxy";
+import { memo } from 'react';
+import Box from '@mui/material/Box';
+import { s3Proxy } from 'src/app/helper/proxy';
 
 function FuseSplashScreen() {
   return (
     <div id="fuse-splash-screen">
       <div className="logo">
-        <img width="128" src={s3Proxy() + "logo.svg"} alt="logo" />
+        <img width="128" src={`${s3Proxy()}/logo.svg`} alt="logo" />
       </div>
       <Box
         id="spinner"
         sx={{
-          "& > div": {
-            backgroundColor: "palette.secondary.main",
+          '& > div': {
+            backgroundColor: 'palette.secondary.main',
           },
         }}
       >

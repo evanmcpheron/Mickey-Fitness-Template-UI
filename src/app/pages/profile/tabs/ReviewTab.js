@@ -11,7 +11,7 @@ const ReviewTab = ({ user }) => {
   //   return <FuseLoading />;
   // }
 
-  return <div>REVIEW TAB</div>;
+  return <h2>REVIEW TAB</h2>;
 };
 
 export default ReviewTab;

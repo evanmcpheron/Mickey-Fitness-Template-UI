@@ -86,7 +86,7 @@ const initialState = {
   uuid: '',
   data: {
     displayName: 'Guest',
-    photoURL: '',
+    photoURL: 'default-profile.jpg',
     email: '',
   },
 };

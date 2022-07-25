@@ -11,7 +11,7 @@ const AboutTab = ({ user }) => {
   //   return <FuseLoading />;
   // }
 
-  return <div>ABOUT TAB</div>;
+  return <h2>ABOUT TAB</h2>;
 };
 
 export default AboutTab;

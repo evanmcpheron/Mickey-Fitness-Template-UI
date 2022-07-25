@@ -33,7 +33,7 @@ const StoreTab = ({ user }) => {
     return <FuseLoading />;
   }
 
-  if (data.message === 'There is no store to be found.') {
+  if (data.message === 'There is no store to be found.' && user.isMe) {
     return (
       <div className="w-full flex justify-center items-center">
         <Paper className="p-36 flex justify-center items-center flex-col">

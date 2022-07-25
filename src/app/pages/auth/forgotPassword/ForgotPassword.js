@@ -1,35 +1,32 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Controller, useForm } from "react-hook-form";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import { Link, useNavigate } from "react-router-dom";
-import * as yup from "yup";
-import _ from "@lodash";
-import AvatarGroup from "@mui/material/AvatarGroup";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import JwtService from "src/app/auth/services/jwtService";
-import { s3Proxy } from "src/app/helper/proxy";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Controller, useForm } from 'react-hook-form';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { Link, useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
+import _ from '@lodash';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import JwtService from 'src/app/auth/services/jwtService';
+import { s3Proxy } from 'src/app/helper/proxy';
 
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email("You must enter a valid email")
-    .required("You must enter a email"),
+  email: yup.string().email('You must enter a valid email').required('You must enter a email'),
 });
 
 const defaultValues = {
-  email: "",
+  email: '',
 };
 
 const ForgotPassword = () => {
   const { control, formState, handleSubmit, reset } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues,
     resolver: yupResolver(schema),
   });
@@ -41,16 +38,16 @@ const ForgotPassword = () => {
   const onSubmit = async ({ email }) => {
     JwtService.forgotPassword(email)
       .then((res) => {
-        navigate("/sign-in");
+        navigate('/sign-in');
       })
       .catch((_error) => {
         _errors.forEach((error) => {
           setError(error.type, {
-            type: "manual",
+            type: 'manual',
             message: error.message,
           });
         });
-        navigate("/sign-in");
+        navigate('/sign-in');
       });
   };
 
@@ -58,7 +55,7 @@ const ForgotPassword = () => {
     <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
       <Paper className="h-full sm:h-auto md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-16 sm:p-48 md:p-64 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none ltr:border-r-1 rtl:border-l-1">
         <div className="w-full max-w-320 sm:w-320 mx-auto sm:mx-0">
-          <img className="w-48" src={s3Proxy() + "logo.svg"} alt="logo" />
+          <img className="w-48" src={`${s3Proxy()}/logo.svg`} alt="logo" />
 
           <Typography className="mt-32 text-4xl font-extrabold tracking-tight leading-tight">
             Forgot password?
@@ -103,10 +100,7 @@ const ForgotPassword = () => {
               Send reset link
             </Button>
 
-            <Typography
-              className="mt-32 text-md font-medium"
-              color="text.secondary"
-            >
+            <Typography className="mt-32 text-md font-medium" color="text.secondary">
               <span>Return to</span>
               <Link className="ml-4" to="/sign-in">
                 sign in
@@ -118,7 +112,7 @@ const ForgotPassword = () => {
 
       <Box
         className="relative hidden md:flex flex-auto items-center justify-center h-full p-64 lg:px-112 overflow-hidden"
-        sx={{ backgroundColor: "primary.main" }}
+        sx={{ backgroundColor: 'primary.main' }}
       >
         <svg
           className="absolute inset-0 pointer-events-none"
@@ -130,7 +124,7 @@ const ForgotPassword = () => {
         >
           <Box
             component="g"
-            sx={{ color: "primary.light" }}
+            sx={{ color: 'primary.light' }}
             className="opacity-20"
             fill="none"
             stroke="currentColor"
@@ -143,7 +137,7 @@ const ForgotPassword = () => {
         <Box
           component="svg"
           className="absolute -top-64 -right-64 opacity-20"
-          sx={{ color: "primary.light" }}
+          sx={{ color: 'primary.light' }}
           viewBox="0 0 220 192"
           width="220px"
           height="192px"
@@ -161,11 +155,7 @@ const ForgotPassword = () => {
               <rect x="0" y="0" width="4" height="4" fill="currentColor" />
             </pattern>
           </defs>
-          <rect
-            width="220"
-            height="192"
-            fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"
-          />
+          <rect width="220" height="192" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)" />
         </Box>
 
         <div className="z-10 relative w-full max-w-2xl">
@@ -174,15 +164,14 @@ const ForgotPassword = () => {
             <div>our community</div>
           </div>
           <div className="mt-24 text-lg tracking-tight leading-6 text-gray-400">
-            Fuse helps developers to build organized and well coded dashboards
-            full of beautiful and rich modules. Join us and start building your
-            application today.
+            Fuse helps developers to build organized and well coded dashboards full of beautiful and
+            rich modules. Join us and start building your application today.
           </div>
           <div className="flex items-center mt-32">
             <AvatarGroup
               sx={{
-                "& .MuiAvatar-root": {
-                  borderColor: "primary.main",
+                '& .MuiAvatar-root': {
+                  borderColor: 'primary.main',
                 },
               }}
             >

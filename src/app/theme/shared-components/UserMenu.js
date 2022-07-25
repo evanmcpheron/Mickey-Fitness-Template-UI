@@ -1,4 +1,3 @@
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -10,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectUser } from 'app/store/userSlice';
-import { s3Proxy } from '../../helper/proxy';
+import UserAvatar from './UserAvatar';
 
 const UserMenu = (props) => {
   const user = useSelector(selectUser);
@@ -42,9 +41,11 @@ const UserMenu = (props) => {
           </Typography>
         </div>
         {user.data.photoURL ? (
-          <Avatar className="md:mx-4" alt="user photo" src={`${s3Proxy()}${user.data.photoURL}`} />
+          <UserAvatar className="md:mx-4" alt="user photo" user={user} />
         ) : (
-          <Avatar className="md:mx-4">{user.data.displayName[0]}</Avatar>
+          <UserAvatar className="md:mx-4" user={user}>
+            {user.data.displayName[0]}
+          </UserAvatar>
         )}
       </Button>
 
