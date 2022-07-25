@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import Box from '@mui/material/Box';
 
 function FuseLoading(props) {
-  console.log('🚀 ~ file: FuseLoading.js ~ line 9 ~ props: ', props);
   const [showLoading, setShowLoading] = useState(!props.delay);
 
   useTimeout(() => {

@@ -39,6 +39,12 @@ const inputGlobalStyles = (
         borderRadius: 2,
         lineHeight: 1.7,
       }, */
+      '.MuiPaper-root': {
+        background:
+          theme.palette.mode === 'light'
+            ? `${theme.palette.background.paper} !important`
+            : `${theme.palette.background.default} !important`,
+      },
       '.paper-form': {
         background:
           theme.palette.mode === 'light'

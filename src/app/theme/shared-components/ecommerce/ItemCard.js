@@ -27,7 +27,6 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 function ItemCard(props) {
   const [awaitRender, setAwaitRender] = useState(true);
   const theme = useTheme();
-  console.log('🚀 ~ file: ItemCard.js ~ line 24 ~ theme: ', theme);
 
   useEffect(() => {
     setAwaitRender(false);

@@ -1,6 +1,6 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { styled } from '@mui/material/styles';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'app/store/userSlice';
 import { useParams, Navigate } from 'react-router-dom';
@@ -21,9 +21,12 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 function ProfilePage() {
   const { userId } = useParams();
   const [isMe] = useState(userId === 'me' ?? true);
-  console.log('🚀 ~ file: ProfilePage.js ~ line 28 ~ isMe: ', isMe);
   const [selectedTab, setSelectedTab] = useState(0);
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
+
+  useEffect(() => {
+    console.log('🚀 ~ file: ProfilePage.js ~ line 29 ~ userId: ', userId);
+  }, [userId]);
 
   const me = useSelector(selectUser);
   const user = {
@@ -48,7 +51,7 @@ function ProfilePage() {
         />
       }
       content={
-        <div className="flex flex-auto justify-center w-full mx-auto pt-32">
+        <div className="flex flex-auto justify-center w-full h-full mx-auto">
           {selectedTab === 0 && <StoreTab user={isMe ? { isMe: true, ...me } : user} />}
           {selectedTab === 1 && <AboutTab user={isMe ? { isMe: true, ...me } : user} />}
           {selectedTab === 2 && <ReviewTab user={isMe ? { isMe: true, ...me } : user} />}
