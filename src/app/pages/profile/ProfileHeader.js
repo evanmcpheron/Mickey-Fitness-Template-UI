@@ -127,7 +127,7 @@ const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
               <Tab
                 className="text-14 font-semibold min-h-40 min-w-64 mx-4 px-12 "
                 disableRipple
-                label="SETTINGS"
+                label="EDIT PROFILE"
               />
             ) : null}
           </Tabs>

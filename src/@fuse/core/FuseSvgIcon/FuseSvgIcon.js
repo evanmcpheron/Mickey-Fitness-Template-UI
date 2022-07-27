@@ -1,8 +1,10 @@
 import clsx from 'clsx';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/system';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSkullCrossbones } from '@fortawesome/pro-light-svg-icons';
 
 const Root = styled(Box)(({ theme, ...props }) => ({
   width: props.size,
@@ -25,7 +27,11 @@ const Root = styled(Box)(({ theme, ...props }) => ({
 }));
 
 const FuseSvgIcon = forwardRef((props, ref) => {
-  const { icon } = props;
+  const [icon, setIcon] = useState(props.icon);
+
+  useEffect(() => {
+    setIcon(props.icon);
+  }, [props.icon]);
 
   return (
     <Root
@@ -40,13 +46,13 @@ const FuseSvgIcon = forwardRef((props, ref) => {
       sx={props.sx}
       color={props.color}
     >
-      <i className={icon ? `fa-light fa-${icon}` : 'fa-regular fa-skull-crossbones'} />
+      <FontAwesomeIcon icon={icon || faSkullCrossbones} />
     </Root>
   );
 });
 
 FuseSvgIcon.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.object,
   size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   sx: PropTypes.object,
   color: PropTypes.oneOf([

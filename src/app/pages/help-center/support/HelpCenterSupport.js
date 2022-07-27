@@ -10,6 +10,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import axios from 'axios';
 import { proxy } from '../../../helper/proxy';
+import Icons from '../../../helper/Icons';
 
 const defaultValues = { name: '', from: '', subject: '', message: '' };
 const schema = yup.object().shape({
@@ -48,7 +49,7 @@ const HelpCenterSupport = () => {
             component={Link}
             to="/help-center"
             color="secondary"
-            startIcon={<FuseSvgIcon icon="arrow-left" />}
+            startIcon={<FuseSvgIcon icon={Icons.faArrowLeft} />}
           >
             Back to Help Center
           </Button>

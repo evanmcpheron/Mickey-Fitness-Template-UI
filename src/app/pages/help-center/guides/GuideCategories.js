@@ -1,11 +1,12 @@
-import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import Typography from "@mui/material/Typography";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import FuseSvgIcon from "@fuse/core/FuseSvgIcon";
-import { getGuides, selectGroupedGuides } from "../store/guidesSlice";
-import GuideListMenu from "./GuideListMenu";
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
+import { getGuides, selectGroupedGuides } from '../store/guidesSlice';
+import GuideListMenu from './GuideListMenu';
+import Icons from '../../../helper/Icons';
 
 function GuideCategories() {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function GuideCategories() {
             component={Link}
             to={-1}
             color="secondary"
-            startIcon={<FuseSvgIcon icon="arrow-left" />}
+            startIcon={<FuseSvgIcon icon={Icons.faArrowLeft} />}
           >
             Back to Help Center
           </Button>
@@ -43,11 +44,7 @@ function GuideCategories() {
                 {category.title}
               </Typography>
 
-              <GuideListMenu
-                list={category.guides}
-                categorySlug={category.slug}
-                maxItems={4}
-              />
+              <GuideListMenu list={category.guides} categorySlug={category.slug} maxItems={4} />
             </div>
           ))}
         </div>

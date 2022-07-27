@@ -62,7 +62,7 @@ function ProfilePage() {
           {selectedTab === 0 && <StoreTab user={isMe ? { isMe: true, ...user } : user} />}
           {selectedTab === 1 && <AboutTab user={isMe ? { isMe: true, ...user } : user} />}
           {selectedTab === 2 && <ReviewTab user={isMe ? { isMe: true, ...user } : user} />}
-          {selectedTab === 3 && <Navigate to="/settings" />}
+          {selectedTab === 3 && <Navigate to="/edit-profile" />}
         </div>
       }
       scroll={isMobile ? 'normal' : 'page'}

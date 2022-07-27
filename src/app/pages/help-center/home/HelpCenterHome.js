@@ -12,6 +12,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useEffect } from 'react';
 import { getFaqsMost, selectFaqsMost } from '../store/faqsMostSlice';
 import FaqList from '../faqs/FaqList';
+import Icons from '../../../helper/Icons';
 
 function HelpCenterHome() {
   const mainThemeDark = useSelector(selectMainThemeDark);
@@ -65,7 +66,7 @@ function HelpCenterHome() {
               fullWidth
               startAdornment={
                 <InputAdornment position="start">
-                  <FuseSvgIcon color="disabled" icon="magnifying-glass" />
+                  <FuseSvgIcon color="disabled" icon={Icons.faMagnifyingGlass} />
                 </InputAdornment>
               }
               inputProps={{
@@ -121,7 +122,7 @@ function HelpCenterHome() {
               <Typography color="secondary" className="mx-8">
                 Go to FAQs
               </Typography>
-              <FuseSvgIcon size={20} color="secondary" icon="arrow-right" />
+              <FuseSvgIcon size={20} color="secondary" icon={Icons.faArrowRight} />
             </Box>
           </Card>
 
@@ -149,7 +150,7 @@ function HelpCenterHome() {
               <Typography color="secondary" className="mx-8">
                 Check guides
               </Typography>
-              <FuseSvgIcon size={20} color="secondary" icon="arrow-right" />
+              <FuseSvgIcon size={20} color="secondary" icon={Icons.faArrowRight} />
             </Box>
           </Card>
 
@@ -177,7 +178,7 @@ function HelpCenterHome() {
               <Typography color="secondary" className="mx-8">
                 Contact us
               </Typography>
-              <FuseSvgIcon size={20} color="secondary" icon="arrow-right" />
+              <FuseSvgIcon size={20} color="secondary" icon={Icons.faArrowRight} />
             </Box>
           </Card>
         </div>

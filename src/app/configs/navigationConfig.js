@@ -3,6 +3,7 @@ import { authRoles } from '../auth';
 import ar from './navigation-i18n/ar';
 import en from './navigation-i18n/en';
 import tr from './navigation-i18n/tr';
+import Icons from '../helper/Icons';
 
 i18next.addResourceBundle('en', 'navigation', en);
 i18next.addResourceBundle('tr', 'navigation', tr);
@@ -13,14 +14,14 @@ const navigationConfig = [
     id: 'home-component',
     title: 'HOME',
     type: 'item',
-    icon: 'home',
+    icon: Icons.faHome,
     url: '',
   },
   {
     id: 'coaches-component',
     title: 'COACHES',
     type: 'item',
-    icon: 'whistle',
+    icon: Icons.faWhistle,
     url: '/coaches',
   },
   {
@@ -28,7 +29,7 @@ const navigationConfig = [
     title: 'PROFILE',
     type: 'item',
     auth: authRoles.user,
-    icon: 'user',
+    icon: Icons.faUser,
     url: '/profile/me',
   },
   {
@@ -36,7 +37,7 @@ const navigationConfig = [
     title: 'FILE MANAGER',
     type: 'item',
     auth: authRoles.admin,
-    icon: 'cloud',
+    icon: Icons.faCloud,
     url: '/file-manager',
   },
   {
@@ -44,14 +45,14 @@ const navigationConfig = [
     title: 'SETTINGS',
     type: 'item',
     auth: authRoles.user,
-    icon: 'gear',
+    icon: Icons.faCloud,
     url: '/settings',
   },
   {
     id: 'help-center-component',
     title: 'HELP CENTER',
     type: 'item',
-    icon: 'circle-info',
+    icon: Icons.faCircleInfo,
     url: '/help-center',
   },
   {
@@ -59,7 +60,7 @@ const navigationConfig = [
     title: 'SIGN OUT',
     type: 'item',
     auth: authRoles.user,
-    icon: 'right-from-bracket',
+    icon: Icons.faRightFromBracket,
     url: '/sign-out',
   },
   {
@@ -67,7 +68,7 @@ const navigationConfig = [
     title: 'SIGN IN',
     auth: authRoles.onlyGuest,
     type: 'item',
-    icon: 'lock-open',
+    icon: Icons.faLockOpen,
     url: 'sign-in',
   },
   {
@@ -75,7 +76,7 @@ const navigationConfig = [
     title: 'SIGN UP',
     auth: authRoles.onlyGuest,
     type: 'item',
-    icon: 'user-plus',
+    icon: Icons.faUserPlus,
     url: 'sign-up',
   },
 ];

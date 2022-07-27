@@ -10,6 +10,7 @@ import { Link, NavLink } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectUser } from 'app/store/userSlice';
 import UserAvatar from './UserAvatar';
+import Icons from '../../helper/Icons';
 
 const UserMenu = (props) => {
   const user = useSelector(selectUser);
@@ -69,13 +70,13 @@ const UserMenu = (props) => {
           <>
             <MenuItem component={Link} to="/sign-in" role="button">
               <ListItemIcon className="min-w-40">
-                <FuseSvgIcon icon="lock-open" />
+                <FuseSvgIcon icon={Icons.faLockOpen} />
               </ListItemIcon>
               <ListItemText primary="Sign In" />
             </MenuItem>
             <MenuItem component={Link} to="/sign-up" role="button">
               <ListItemIcon className="min-w-40">
-                <FuseSvgIcon icon="user-plus" />
+                <FuseSvgIcon icon={Icons.faUserPlus} />
               </ListItemIcon>
               <ListItemText primary="Sign up" />
             </MenuItem>
@@ -84,13 +85,13 @@ const UserMenu = (props) => {
           <>
             <MenuItem component={Link} to="/profile/me" onClick={userMenuClose} role="button">
               <ListItemIcon className="min-w-40">
-                <FuseSvgIcon icon="user" />
+                <FuseSvgIcon icon={Icons.faUser} />
               </ListItemIcon>
               <ListItemText primary="My Profile" />
             </MenuItem>
             <MenuItem component={Link} to="/apps/mailbox" onClick={userMenuClose} role="button">
               <ListItemIcon className="min-w-40">
-                <FuseSvgIcon icon="gear" />
+                <FuseSvgIcon icon={Icons.faGear} />
               </ListItemIcon>
               <ListItemText primary="Settings" />
             </MenuItem>
@@ -102,7 +103,7 @@ const UserMenu = (props) => {
               }}
             >
               <ListItemIcon className="min-w-40">
-                <FuseSvgIcon icon="right-from-bracket" />
+                <FuseSvgIcon icon={Icons.faRightFromBracket} />
               </ListItemIcon>
               <ListItemText primary="Sign out" />
             </MenuItem>
