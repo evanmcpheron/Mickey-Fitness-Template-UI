@@ -3,27 +3,55 @@ import Typography from '@mui/material/Typography';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
+import { useState } from 'react';
+import { IconButton } from '@mui/material';
+import { PhotoCamera } from '@mui/icons-material';
 import { s3Proxy } from '../../helper/proxy';
 import Ratings from '../../theme/shared-components/Ratings';
 import UserAvatar from '../../theme/shared-components/UserAvatar';
+import CustomModal from '../../theme/shared-components/CustomModal';
 
 const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
-  function handleTabChange(event, value) {
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleTabChange = (event, value) => {
     setSelectedTab(value);
-  }
+  };
 
   return (
     <div className="flex flex-col">
-      <img
-        className="h-160 lg:h-320 object-cover w-full"
-        src={
-          user.data.coverPhoto === 'default-cover-photo.png'
-            ? `${s3Proxy()}/user/${user.data.coverPhoto}`
-            : `${s3Proxy()}/user/${user.uuid}/${user.data.coverPhoto}`
-        }
-        alt="Profile Cover"
+      <CustomModal
+        handleClose={handleClose}
+        open={open}
+        title="Upload Profile Image."
+        content={<div>IMAGE UPLOAD GOES HERE</div>}
       />
-
+      } />
+      <div className="relative">
+        <img
+          className="h-160 lg:h-320 object-cover w-full"
+          src={
+            user.data.coverPhoto === 'default-cover-photo.png'
+              ? `${s3Proxy()}/user/${user.data.coverPhoto}`
+              : `${s3Proxy()}/user/${user.uuid}/${user.data.coverPhoto}`
+          }
+          alt="Profile Cover"
+        />
+        {user.isMe ? (
+          <IconButton
+            color="primary"
+            className="absolute bottom-0 right-0"
+            aria-label="upload picture"
+            component="label"
+            onClick={() => setOpen(true)}
+          >
+            <PhotoCamera />
+          </IconButton>
+        ) : null}
+      </div>
       <div className="flex flex-col flex-0 lg:flex-row items-center max-w-5xl w-full mx-auto px-32 lg:h-72">
         <div className="-mt-96 lg:-mt-88 rounded-full">
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1, transition: { delay: 0.1 } }}>

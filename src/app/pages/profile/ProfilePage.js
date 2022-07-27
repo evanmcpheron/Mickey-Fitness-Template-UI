@@ -43,7 +43,7 @@ function ProfilePage() {
     } else {
       setUser(me);
     }
-  }, [userId]);
+  }, [userId, useSelector(selectUser)]);
   if (!user) {
     return <FuseLoading />;
   }

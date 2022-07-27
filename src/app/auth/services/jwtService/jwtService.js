@@ -1,8 +1,8 @@
-import FuseUtils from "@fuse/utils/FuseUtils";
-import axios from "axios";
-import { get } from "lodash";
-import { proxy } from "src/app/helper/proxy";
-import jwtServiceConfig from "./jwtServiceConfig";
+import FuseUtils from '@fuse/utils/FuseUtils';
+import axios from 'axios';
+import { get } from 'lodash';
+import { proxy } from 'src/app/helper/proxy';
+import jwtServiceConfig from './jwtServiceConfig';
 
 /* eslint-disable camelcase */
 
@@ -19,13 +19,9 @@ class JwtService extends FuseUtils.EventEmitter {
       },
       (err) => {
         return new Promise((resolve, reject) => {
-          if (
-            err.response.status === 401 &&
-            err.config &&
-            !err.config.__isRetryRequest
-          ) {
+          if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
             // if you ever get an unauthorized response, logout the user
-            this.emit("onAutoLogout");
+            this.emit('onAutoLogout');
           }
           throw err;
         });
@@ -37,34 +33,27 @@ class JwtService extends FuseUtils.EventEmitter {
     const validUser = await this.getMe();
 
     if (validUser.data.error) {
-      this.emit("onNoAccessToken");
+      this.emit('onNoAccessToken');
       return;
     }
 
     if (!validUser.data.error) {
-      this.emit("onAutoLogin", true);
+      this.emit('onAutoLogin', true);
     } else {
-      this.emit("onAutoLogout", "Session expired");
+      this.emit('onAutoLogout', 'Session expired');
     }
   };
 
   createUser = async (data) => {
     try {
-      const response = await axios.post(
-        proxy() + jwtServiceConfig.signUp,
-        data
-      );
+      const response = await axios.post(proxy() + jwtServiceConfig.signUp, data);
 
       this.setSession(response.data.access_token);
-      this.emit("onLogin", response.data.results.user);
+      this.emit('onLogin', response.data.results.user);
     } catch (error) {
-      const errorMessage = get(
-        error,
-        "response.data.message",
-        "Oops. Something went wrong."
-      );
+      const errorMessage = get(error, 'response.data.message', 'Oops. Something went wrong.');
 
-      this.emit("onLoginError", errorMessage);
+      this.emit('onLoginError', errorMessage);
     }
   };
 
@@ -76,28 +65,21 @@ class JwtService extends FuseUtils.EventEmitter {
         rememberMe,
       });
 
-      this.emit("onLogin", response.data.results.user);
+      this.emit('onLogin', response.data.results.user);
     } catch (error) {
-      const errorMessage = get(
-        error,
-        "response.data.message",
-        "Oops. Something went wrong."
-      );
-      this.emit("onLoginError", errorMessage);
+      const errorMessage = get(error, 'response.data.message', 'Oops. Something went wrong.');
+      this.emit('onLoginError', errorMessage);
     }
   };
 
   forgotPassword = async (email) => {
     try {
-      const response = await axios.post(
-        proxy() + jwtServiceConfig.forgotPassword,
-        { email }
-      );
-      this.emit("onForgotPassword", response.data.message);
+      const response = await axios.post(proxy() + jwtServiceConfig.forgotPassword, { email });
+      this.emit('onForgotPassword', response.data.message);
     } catch (error) {
-      const errorMessage = get(error, "message", "Oops. Something went wrong.");
+      const errorMessage = get(error, 'message', 'Oops. Something went wrong.');
 
-      this.emit("onForgotPasswordError", errorMessage);
+      this.emit('onForgotPasswordError', errorMessage);
     }
   };
 
@@ -108,7 +90,7 @@ class JwtService extends FuseUtils.EventEmitter {
         password
       );
 
-      this.emit("onForgotPassword", response.data.message);
+      this.emit('onForgotPassword', response.data.message);
     } catch (error) {
       console.log(error);
     }
@@ -118,7 +100,7 @@ class JwtService extends FuseUtils.EventEmitter {
     try {
       const response = await this.getMe();
 
-      this.emit("onLogin", response.data.results);
+      this.emit('onLogin', response.data.results);
     } catch (error) {
       this.logout();
     }
@@ -132,10 +114,10 @@ class JwtService extends FuseUtils.EventEmitter {
 
   setSession = (access_token) => {
     if (access_token) {
-      localStorage.setItem("jwt_access_token", access_token);
+      localStorage.setItem('jwt_access_token', access_token);
       axios.defaults.headers.common.Authorization = `${access_token}`;
     } else {
-      localStorage.removeItem("jwt_access_token");
+      localStorage.removeItem('jwt_access_token');
       delete axios.defaults.headers.common.Authorization;
     }
   };
@@ -143,8 +125,10 @@ class JwtService extends FuseUtils.EventEmitter {
   logout = async () => {
     try {
       await axios.post(proxy() + jwtServiceConfig.signOut);
-    } catch (error) {}
-    this.emit("onLogout");
+    } catch (error) {
+      console.log('🚀 ~ file: jwtService.js ~ line 147 ~ error: ', error);
+    }
+    this.emit('onLogout');
   };
 
   getMe = async () => {

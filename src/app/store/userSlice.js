@@ -18,6 +18,20 @@ export const setUser = createAsyncThunk('user/setUser', async (user, { dispatch,
   return user;
 });
 
+export const updateUserState = createAsyncThunk(
+  'user/updateUser',
+  async (user, { dispatch, getState }) => {
+    /*
+    You can redirect the logged-in user to a specific route depending on his role
+    */
+    if (user.loginRedirectUrl) {
+      settingsConfig.loginRedirectUrl = user.loginRedirectUrl; // for example 'apps/academy'
+    }
+
+    return user;
+  }
+);
+
 export const updateUserSettings = createAsyncThunk(
   'user/updateSettings',
   async (settings, { dispatch, getState }) => {
@@ -86,6 +100,9 @@ const initialState = {
   uuid: '',
   data: {
     displayName: 'Guest',
+    firstName: 'Guest',
+    lastName: '',
+    coverPhoto: 'default-cover-photo.png',
     photoURL: 'default-profile.jpg',
     email: '',
   },
@@ -101,6 +118,7 @@ const userSlice = createSlice({
     [updateUserSettings.fulfilled]: (state, action) => action.payload,
     [updateUserShortcuts.fulfilled]: (state, action) => action.payload,
     [setUser.fulfilled]: (state, action) => action.payload,
+    [updateUserState.fulfilled]: (state, action) => action.payload,
   },
 });
 
