@@ -1,7 +1,7 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FuseLoading from '@fuse/core/FuseLoading';
 import { useSelector } from 'react-redux';
@@ -28,6 +28,7 @@ function ProfilePage() {
   const [selectedTab, setSelectedTab] = useState(0);
   const me = useSelector(selectUser);
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isMe) {
@@ -44,6 +45,11 @@ function ProfilePage() {
       setUser(me);
     }
   }, [userId, useSelector(selectUser)]);
+
+  if (user?.role.length === 0) {
+    return navigate('/sign-in');
+  }
+
   if (!user) {
     return <FuseLoading />;
   }

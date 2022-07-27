@@ -29,7 +29,6 @@ const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
         title="Upload Profile Image."
         content={<div>IMAGE UPLOAD GOES HERE</div>}
       />
-      } />
       <div className="relative">
         <img
           className="h-160 lg:h-320 object-cover w-full"

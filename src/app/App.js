@@ -47,7 +47,7 @@ const App = () => {
     <CacheProvider value={createCache(emotionCacheOptions[langDirection])}>
       <FuseTheme theme={mainTheme} direction={langDirection}>
         <AuthProvider>
-          <BrowserRouter>
+          <BrowserRouter user={user}>
             <FuseAuthorization
               userRole={user.role}
               loginRedirectUrl={settingsConfig.loginRedirectUrl}
