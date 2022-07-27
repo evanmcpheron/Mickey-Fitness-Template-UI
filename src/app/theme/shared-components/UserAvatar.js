@@ -35,7 +35,7 @@ const UserAvatar = ({ user, sx, className, alt, ...props }) => {
           title="Upload Profile Image."
           content={<div>IMAGE UPLOAD GOES HERE</div>}
         />
-        } />
+
         <Avatar
           sx={sx}
           className={className}
