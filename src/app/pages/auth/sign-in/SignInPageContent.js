@@ -15,8 +15,11 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { s3Proxy } from 'src/app/helper/proxy';
+import { useTheme } from '@mui/material/styles';
 import jwtService from '../../../auth/services/jwtService';
+import Icons from '../../../helper/Icons';
 
+const { faFacebookF, faGoogle, faApple } = Icons;
 /**
  * Form Validation Schema
  */
@@ -40,6 +43,8 @@ const SignInPageContent = () => {
     defaultValues,
     resolver: yupResolver(schema),
   });
+
+  const theme = useTheme();
 
   const { isValid, dirtyFields, errors } = formState;
 
@@ -157,20 +162,43 @@ const SignInPageContent = () => {
             </div>
 
             <div className="flex items-center mt-32 space-x-16">
-              <Button variant="outlined" className="flex-auto">
-                <FuseSvgIcon size={20} color="action">
-                  feather:facebook
-                </FuseSvgIcon>
+              <Button
+                variant="outlined"
+                className="flex-auto"
+                sx={{
+                  transition: 'background .2s ease',
+                  '&:hover': {
+                    background: '#1877f2',
+                    color: '#f0f0f0 !important',
+                    border: '1px transparent solid',
+                  },
+                }}
+              >
+                <FuseSvgIcon size={20} icon={faFacebookF} />
               </Button>
-              <Button variant="outlined" className="flex-auto">
-                <FuseSvgIcon size={20} color="action">
-                  feather:twitter
-                </FuseSvgIcon>
+              <Button
+                variant="outlined"
+                className="flex-auto"
+                sx={{
+                  transition: 'background .2s ease',
+                  '&:hover': {
+                    background: '#ea4335',
+                    color: '#f0f0f0 !important',
+                    border: '1px transparent solid',
+                  },
+                }}
+              >
+                <FuseSvgIcon size={20} icon={faGoogle} />
               </Button>
-              <Button variant="outlined" className="flex-auto">
-                <FuseSvgIcon size={20} color="action">
-                  feather:github
-                </FuseSvgIcon>
+              <Button
+                variant="outlined"
+                className="flex-auto"
+                sx={{
+                  transition: 'background .2s ease',
+                  '&:hover': { background: '#ccc', border: '1px transparent solid' },
+                }}
+              >
+                <FuseSvgIcon size={20} icon={faApple} />
               </Button>
             </div>
           </form>
