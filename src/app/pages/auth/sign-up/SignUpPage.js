@@ -276,11 +276,10 @@ const SignUpPage = () => {
         <div className="z-10 relative w-full max-w-2xl">
           <div className="text-7xl font-bold leading-none text-gray-100">
             <div>Welcome to</div>
-            <div>our community</div>
+            <div>Mickey Fitness</div>
           </div>
           <div className="mt-24 text-lg tracking-tight leading-6 text-gray-400">
-            Fuse helps developers to build organized and well coded dashboards full of beautiful and
-            rich modules. Join us and start building your application today.
+            We're thrilled you're choosing to trust our coaches with your health journey!
           </div>
           <div className="flex items-center mt-32">
             <AvatarGroup
@@ -297,7 +296,7 @@ const SignUpPage = () => {
             </AvatarGroup>
 
             <div className="ml-16 font-medium tracking-tight text-gray-400">
-              More than 17k people joined us, it's your turn
+              More than 7k people joined us, it's your turn
             </div>
           </div>
         </div>

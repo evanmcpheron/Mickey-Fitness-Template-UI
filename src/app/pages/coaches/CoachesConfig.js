@@ -1,17 +1,6 @@
-import Coaches from './CoachesPage';
+import ProgramConfig from './program/ProgramConfig';
+import CreateCoachConfig from './createCoach/CreateCoachConfig';
 
-const CoachesConfig = {
-  settings: {
-    layout: {
-      config: {},
-    },
-  },
-  routes: [
-    {
-      path: '/coaches',
-      element: <Coaches />,
-    },
-  ],
-};
+const CoachesConfig = [ProgramConfig, CreateCoachConfig];
 
 export default CoachesConfig;

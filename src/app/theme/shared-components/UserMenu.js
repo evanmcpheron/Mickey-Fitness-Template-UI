@@ -89,7 +89,7 @@ const UserMenu = (props) => {
               </ListItemIcon>
               <ListItemText primary="My Profile" />
             </MenuItem>
-            <MenuItem component={Link} to="/apps/mailbox" onClick={userMenuClose} role="button">
+            <MenuItem component={Link} to="/settings" onClick={userMenuClose} role="button">
               <ListItemIcon className="min-w-40">
                 <FuseSvgIcon icon={Icons.faGear} />
               </ListItemIcon>

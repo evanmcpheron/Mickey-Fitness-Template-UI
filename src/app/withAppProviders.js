@@ -12,8 +12,6 @@ import store from './store';
 import AppContext from './AppContext';
 
 const withAppProviders = (Component) => (props) => {
-  console.log('🚀 ~ file: withAppProviders.js ~ line 33 ~ Component: ', Component);
-
   const WrapperComponent = () => (
     <AppContext.Provider
       value={{

@@ -13,7 +13,7 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-const CoachesPage = (props) => {
+const Program = (props) => {
   return (
     <Root
       header={
@@ -21,10 +21,10 @@ const CoachesPage = (props) => {
           <h4>HERO BAR GOES HERE (SLIDER THING)</h4>
         </div>
       }
-      content={<div className="p-24">COACHES</div>}
+      content={<div className="p-24">THIS IS WHERE SPECIFIC PROGRAM INFORMATION WILL GO</div>}
       scroll="content"
     />
   );
 };
 
-export default CoachesPage;
+export default Program;

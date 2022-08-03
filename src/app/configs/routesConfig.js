@@ -16,11 +16,11 @@ const routeConfigs = [
   ...AuthConfig,
   ...ProfileConfig,
   ...LegalConfig,
+  ...CoachesConfig,
   HomeConfig,
   HelpCenterAppConfig,
   FileManagerAppConfig,
   ErrorConfig,
-  CoachesConfig,
   CheckoutConfig,
 ];
 

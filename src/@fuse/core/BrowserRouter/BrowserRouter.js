@@ -3,7 +3,6 @@ import history from '@history';
 import { Router } from 'react-router-dom';
 
 function BrowserRouter({ basename, children, window, user }) {
-  console.log('🚀 ~ file: BrowserRouter.js ~ line 6 ~ user: ', user);
   const [state, setState] = useState({
     action: history.action,
     location: history.location,

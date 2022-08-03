@@ -42,7 +42,7 @@ const StoreTab = ({ user }) => {
             variant="contained"
             color="success"
             className="w-full mt-36"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/create/coach')}
           >
             Create Store
           </Button>
