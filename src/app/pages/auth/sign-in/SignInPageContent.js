@@ -14,12 +14,11 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import { s3Proxy } from 'src/app/helper/proxy';
-import { useTheme } from '@mui/material/styles';
+import { proxy, s3Proxy } from 'src/app/helper/proxy';
 import jwtService from '../../../auth/services/jwtService';
 import Icons from '../../../helper/Icons';
 
-const { faFacebookF, faGoogle, faApple } = Icons;
+const { faFacebookF, faGoogle, faTwitter } = Icons;
 /**
  * Form Validation Schema
  */
@@ -43,8 +42,6 @@ const SignInPageContent = () => {
     defaultValues,
     resolver: yupResolver(schema),
   });
-
-  const theme = useTheme();
 
   const { isValid, dirtyFields, errors } = formState;
 
@@ -165,6 +162,7 @@ const SignInPageContent = () => {
               <Button
                 variant="outlined"
                 className="flex-auto"
+                href={`${proxy()}/v1/auth/facebook`}
                 sx={{
                   transition: 'background .2s ease',
                   '&:hover': {
@@ -179,6 +177,7 @@ const SignInPageContent = () => {
               <Button
                 variant="outlined"
                 className="flex-auto"
+                href={`${proxy()}/v1/auth/google`}
                 sx={{
                   transition: 'background .2s ease',
                   '&:hover': {
@@ -193,12 +192,13 @@ const SignInPageContent = () => {
               <Button
                 variant="outlined"
                 className="flex-auto"
+                href={`${proxy()}/v1/auth/twitter`}
                 sx={{
                   transition: 'background .2s ease',
-                  '&:hover': { background: '#ccc', border: '1px transparent solid' },
+                  '&:hover': { background: '#1da1f2', border: '1px transparent solid' },
                 }}
               >
-                <FuseSvgIcon size={20} icon={faApple} />
+                <FuseSvgIcon size={20} icon={faTwitter} />
               </Button>
             </div>
           </form>

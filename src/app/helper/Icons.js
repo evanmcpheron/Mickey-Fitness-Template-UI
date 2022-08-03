@@ -17,7 +17,7 @@ import {
   faCircleInfo,
 } from '@fortawesome/pro-light-svg-icons';
 
-import { faFacebookF, faGoogle, faApple } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const Icons = {
   faSun,
@@ -38,7 +38,7 @@ const Icons = {
   faCircleInfo,
   faFacebookF,
   faGoogle,
-  faApple,
+  faTwitter,
 };
 
 export default Icons;
