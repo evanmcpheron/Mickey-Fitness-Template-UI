@@ -10,10 +10,12 @@ import CoachesConfig from '../pages/coaches/CoachesConfig';
 import CheckoutConfig from '../pages/checkoutForm/CheckoutConfig';
 import AuthConfig from '../pages/auth/AuthConfig';
 import ProfileConfig from '../pages/profile/ProfileConfig';
+import LegalConfig from '../pages/legal/LegalConfig';
 
 const routeConfigs = [
   ...AuthConfig,
   ...ProfileConfig,
+  ...LegalConfig,
   HomeConfig,
   HelpCenterAppConfig,
   FileManagerAppConfig,

@@ -198,7 +198,12 @@ const SignUpPage = () => {
               render={({ field }) => (
                 <FormControl className="items-center" error={!!errors.acceptTermsConditions}>
                   <FormControlLabel
-                    label="I agree to the Terms of Service and Privacy Policy"
+                    label={
+                      <div>
+                        I agree to the <Link to="/terms">Terms of Service</Link> and{' '}
+                        <Link to="/privacy">Privacy Policy</Link>
+                      </div>
+                    }
                     control={<Checkbox size="small" {...field} />}
                   />
                   <FormHelperText>{errors?.acceptTermsConditions?.message}</FormHelperText>
