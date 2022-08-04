@@ -156,7 +156,7 @@ const CreateCoach = () => {
                 />
               )}
             />
-            {certifications.length > 0 ?? (
+            {specialties.length > 0 ? (
               <Stack direction="row" className="mb-24" sx={{ flexWrap: 'wrap' }}>
                 {specialties.map((specialty, idx) => {
                   return (
@@ -169,7 +169,7 @@ const CreateCoach = () => {
                   );
                 })}
               </Stack>
-            )}
+            ) : null}
             <Controller
               name="specialties"
               control={control}
@@ -186,7 +186,7 @@ const CreateCoach = () => {
                 />
               )}
             />
-            {certifications.length > 0 ?? (
+            {certifications.length > 0 ? (
               <Stack direction="row" className="mb-24" sx={{ flexWrap: 'wrap' }}>
                 {certifications.map((cert, idx) => {
                   return (
@@ -199,7 +199,7 @@ const CreateCoach = () => {
                   );
                 })}
               </Stack>
-            )}
+            ) : null}
             <Controller
               name="certifications"
               control={control}
