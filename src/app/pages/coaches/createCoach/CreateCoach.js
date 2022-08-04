@@ -7,17 +7,19 @@ import _ from '@lodash';
 import Box from '@mui/material/Box';
 import { Chip, Stack } from '@mui/material';
 import { useState } from 'react';
+import axios from 'axios';
+import { proxy } from '../../../helper/proxy';
 
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  store: yup.string().required('You must enter a store name. (It can be your name too)'),
+  name: yup.string().required('You must enter a store name. (It can be your name too)'),
 });
 
 const defaultValues = {
-  store: '',
-  bio: '',
+  name: '',
+  about: '',
   specialties: '',
   certifications: '',
 };
@@ -33,8 +35,14 @@ const CreateCoach = () => {
 
   const { isValid, dirtyFields, errors } = formState;
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = async (event, data) => {
+    event.preventDefault();
+    const { name, about } = data;
+    const submittingData = { name, about, specialties, certifications };
+
+    const response = await axios.post(`${proxy()}/v1/store`, submittingData);
+
+    console.log(response.data);
   };
 
   const addSpecialty = (event) => {
@@ -126,7 +134,7 @@ const CreateCoach = () => {
         <div className="w-full max-w-320 sm:w-320 mx-auto sm:mx-0">
           <form name="registerForm" noValidate className="flex flex-col justify-center w-full">
             <Controller
-              name="store"
+              name="name"
               control={control}
               render={({ field }) => (
                 <TextField
@@ -142,14 +150,14 @@ const CreateCoach = () => {
               )}
             />
             <Controller
-              name="bio"
+              name="about"
               control={control}
               render={({ field }) => (
                 <TextField
                   {...field}
                   className="mb-24"
                   id="outlined-multiline-static"
-                  label="Bio"
+                  label="About"
                   multiline
                   rows={10}
                   variant="outlined"
@@ -218,7 +226,7 @@ const CreateCoach = () => {
             />
             <Button
               variant="contained"
-              onClick={onSubmit}
+              onClick={(e) => onSubmit(e, getValues())}
               color="secondary"
               className=" w-full mt-4"
               aria-label="Register"
