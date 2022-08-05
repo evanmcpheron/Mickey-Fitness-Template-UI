@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { authRoles } from '../../auth';
 
 const SettingsTab = lazy(() => import('./SettingsPage'));
 
@@ -8,6 +9,7 @@ const SettingsConfig = {
       config: {},
     },
   },
+  auth: authRoles.user,
   routes: [
     {
       path: 'settings',

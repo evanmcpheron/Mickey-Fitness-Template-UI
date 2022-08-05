@@ -12,7 +12,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useEffect } from 'react';
 import { getFaqsMost, selectFaqsMost } from '../store/faqsMostSlice';
 import FaqList from '../faqs/FaqList';
-import Icons from '../../../helper/Icons';
+import Icons from '../../../../@helper/Icons';
 
 function HelpCenterHome() {
   const mainThemeDark = useSelector(selectMainThemeDark);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const AboutTab = ({ user }) => {
+const AboutTab = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {

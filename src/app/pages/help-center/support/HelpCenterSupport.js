@@ -9,8 +9,8 @@ import TextField from '@mui/material/TextField';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import axios from 'axios';
-import { proxy } from '../../../helper/proxy';
-import Icons from '../../../helper/Icons';
+import { proxy } from '../../../../@helper/proxy';
+import Icons from '../../../../@helper/Icons';
 
 const defaultValues = { name: '', from: '', subject: '', message: '' };
 const schema = yup.object().shape({

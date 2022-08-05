@@ -8,8 +8,8 @@ import * as yup from 'yup';
 import _ from '@lodash';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import JwtService from 'src/app/auth/services/jwtService';
-import { s3Proxy } from 'src/app/helper/proxy';
+import JwtService from 'app/auth/services/jwtService';
+import { s3Proxy } from '@helper/proxy';
 
 /**
  * Form Validation Schema
@@ -39,11 +39,8 @@ const ForgotPassword = () => {
         navigate('/sign-in');
       })
       .catch((_error) => {
-        _errors.forEach((error) => {
-          setError(error.type, {
-            type: 'manual',
-            message: error.message,
-          });
+        _error.forEach((error) => {
+          console.log(error);
         });
         navigate('/sign-in');
       });

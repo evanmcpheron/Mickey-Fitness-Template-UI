@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { getGuides, selectGroupedGuides } from '../store/guidesSlice';
 import GuideListMenu from './GuideListMenu';
-import Icons from '../../../helper/Icons';
+import Icons from '../../../../@helper/Icons';
 
 function GuideCategories() {
   const dispatch = useDispatch();

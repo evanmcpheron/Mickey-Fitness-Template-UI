@@ -2,7 +2,7 @@ import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import { memo } from 'react';
-import { s3Proxy } from 'src/app/helper/proxy';
+import { s3Proxy } from '@helper/proxy';
 import NavbarToggleButton from '../../../shared-components/NavbarToggleButton';
 import UserNavbarHeader from '../../../shared-components/UserNavbarHeader';
 import Navigation from '../../../shared-components/Navigation';

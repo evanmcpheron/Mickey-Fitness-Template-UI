@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { s3Proxy } from 'src/app/helper/proxy';
+import { s3Proxy } from '@helper/proxy';
 
 const Root = styled('div')(({ theme }) => ({
   '& > .logo-icon': {

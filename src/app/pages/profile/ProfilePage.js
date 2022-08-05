@@ -11,7 +11,7 @@ import ReviewTab from './tabs/ReviewTab';
 import StoreTab from './tabs/StoreTab';
 import useThemeMediaQuery from '../../../@fuse/hooks/useThemeMediaQuery';
 import ProfileHeader from './ProfileHeader';
-import { proxy } from '../../helper/proxy';
+import { proxy } from '../../../@helper/proxy';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {

@@ -6,7 +6,7 @@ import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { getGuides, selectGuides } from '../store/guidesSlice';
 import { selectGuideCategorieseBySlug } from '../store/guideCategoriesSlice';
 import GuideListMenu from './GuideListMenu';
-import Icons from '../../../helper/Icons';
+import Icons from '../../../../@helper/Icons';
 
 function GuideCategory() {
   const dispatch = useDispatch();

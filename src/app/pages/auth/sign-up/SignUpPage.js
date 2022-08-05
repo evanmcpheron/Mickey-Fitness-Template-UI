@@ -15,7 +15,7 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import FormHelperText from '@mui/material/FormHelperText';
-import { s3Proxy } from 'src/app/helper/proxy';
+import { s3Proxy } from '@helper/proxy';
 import jwtService from '../../../auth/services/jwtService';
 
 /**

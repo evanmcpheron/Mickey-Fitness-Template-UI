@@ -1,4 +1,5 @@
 import Program from './ProgramPage';
+import authRoles from '../../../auth/authRoles';
 
 const ProgramConfig = {
   settings: {
@@ -6,6 +7,7 @@ const ProgramConfig = {
       config: {},
     },
   },
+  auth: authRoles.user,
   routes: [
     {
       path: '/program/:id',

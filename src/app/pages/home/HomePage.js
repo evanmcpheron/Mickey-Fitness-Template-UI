@@ -8,7 +8,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { useSelector } from 'react-redux';
 import { selectMainThemeDark } from 'app/store/fuse/settingsSlice';
-import Icons from '../../helper/Icons';
+import Icons from '../../../@helper/Icons';
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {

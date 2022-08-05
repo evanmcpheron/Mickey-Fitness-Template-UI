@@ -1,7 +1,7 @@
 import FuseUtils from '@fuse/utils/FuseUtils';
 import axios from 'axios';
 import { get } from 'lodash';
-import { proxy } from 'src/app/helper/proxy';
+import { proxy } from '@helper/proxy';
 import jwtServiceConfig from './jwtServiceConfig';
 
 /* eslint-disable camelcase */
