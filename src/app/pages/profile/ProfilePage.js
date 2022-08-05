@@ -25,6 +25,7 @@ function ProfilePage() {
   const { userId } = useParams();
   const [isMe] = useState(userId === 'me' ?? true);
   const [user, setUser] = useState();
+  const [store, setStore] = useState(null);
   const [selectedTab, setSelectedTab] = useState(0);
   const me = useSelector(selectUser);
   const isMobile = useThemeMediaQuery((theme) => theme.breakpoints.down('lg'));
@@ -44,6 +45,15 @@ function ProfilePage() {
     } else {
       setUser(me);
     }
+
+    axios
+      .get(`${proxy()}/v1/store/${userId}`)
+      .then((res) => {
+        setStore(res.data);
+      })
+      .catch((err) => {
+        console.log('🚀 ~ file: StoreTab.js ~ line 16 ~ err: ', err);
+      });
   }, [userId, useSelector(selectUser)]);
 
   if (user?.role.length === 0) {
@@ -65,9 +75,15 @@ function ProfilePage() {
       }
       content={
         <div className="flex flex-auto justify-center w-full h-full mx-auto">
-          {selectedTab === 0 && <StoreTab user={isMe ? { isMe: true, ...user } : user} />}
-          {selectedTab === 1 && <AboutTab user={isMe ? { isMe: true, ...user } : user} />}
-          {selectedTab === 2 && <ReviewTab user={isMe ? { isMe: true, ...user } : user} />}
+          {selectedTab === 0 && (
+            <StoreTab user={isMe ? { isMe: true, ...user } : user} store={store} />
+          )}
+          {selectedTab === 1 && (
+            <AboutTab user={isMe ? { isMe: true, ...user } : user} store={store} />
+          )}
+          {selectedTab === 2 && (
+            <ReviewTab user={isMe ? { isMe: true, ...user } : user} store={store} />
+          )}
           {selectedTab === 3 && <Navigate to="/edit-profile" />}
         </div>
       }

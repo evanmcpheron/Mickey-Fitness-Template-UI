@@ -1,31 +1,16 @@
-import { useEffect, useState } from 'react';
 import { Grid, Paper } from '@mui/material';
 import FuseLoading from '@fuse/core/FuseLoading';
-import axios from 'axios';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import { proxy } from '../../../../@helper/proxy';
 
-const StoreTab = ({ user }) => {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    axios
-      .get(`${proxy()}/v1/store/me`)
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log('🚀 ~ file: StoreTab.js ~ line 16 ~ err: ', err);
-      });
-  }, []);
-
+const StoreTab = ({ user, store }) => {
   const navigate = useNavigate();
 
-  if (!data) {
+  if (!store) {
     return <FuseLoading />;
   }
 
-  if (data.message === 'There is no store to be found.' && user.isMe) {
+  if (store.message === 'There is no store to be found.' && user.isMe) {
     return (
       <div className="w-full flex justify-center items-center">
         <Paper className="p-36 flex justify-center items-center flex-col">

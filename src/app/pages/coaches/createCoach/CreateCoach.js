@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import { Chip, Stack } from '@mui/material';
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { proxy } from '../../../../@helper/proxy';
 
 /**
@@ -33,6 +34,8 @@ const CreateCoach = () => {
     resolver: yupResolver(schema),
   });
 
+  const navigate = useNavigate();
+
   const { isValid, dirtyFields, errors } = formState;
 
   const onSubmit = async (event, data) => {
@@ -40,9 +43,14 @@ const CreateCoach = () => {
     const { name, about } = data;
     const submittingData = { name, about, specialties, certifications };
 
-    const response = await axios.post(`${proxy()}/v1/store`, submittingData);
-
-    console.log(response.data);
+    axios
+      .post(`${proxy()}/v1/store`, submittingData)
+      .then((res) => {
+        navigate('/profile/me');
+      })
+      .catch((err) => {
+        console.log('🚀 ~ file: CreateCoach.js ~ line 49 ~ err: ', err);
+      });
   };
 
   const addSpecialty = (event) => {
