@@ -6,7 +6,7 @@ import Tab from '@mui/material/Tab';
 import { useState } from 'react';
 import { IconButton } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
-import { s3Proxy } from '../../helper/proxy';
+import { s3Proxy } from '../../../@helper/proxy';
 import Ratings from '../../theme/shared-components/Ratings';
 import UserAvatar from '../../theme/shared-components/UserAvatar';
 import CustomModal from '../../theme/shared-components/CustomModal';

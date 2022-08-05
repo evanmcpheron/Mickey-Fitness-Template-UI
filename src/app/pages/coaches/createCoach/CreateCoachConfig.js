@@ -1,4 +1,5 @@
 import CreateCoach from './CreateCoach';
+import authRoles from '../../../auth/authRoles';
 
 const CreateCoachConfig = {
   settings: {
@@ -6,6 +7,7 @@ const CreateCoachConfig = {
       config: {},
     },
   },
+  auth: authRoles.user,
   routes: [
     {
       path: '/create/coach',

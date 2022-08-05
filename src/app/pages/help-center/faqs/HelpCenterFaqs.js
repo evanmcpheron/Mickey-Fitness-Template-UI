@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { getFaqs, selectGroupedFaqs } from '../store/faqsSlice';
 import { getFaqCategories } from '../store/faqCategoriesSlice';
 import FaqList from './FaqList';
-import Icons from '../../../helper/Icons';
+import Icons from '../../../../@helper/Icons';
 
 function HelpCenterFaqs() {
   const dispatch = useDispatch();

@@ -46,7 +46,7 @@
                 "tabWidth": 2,
                 "trailingComma": "es5",
                 "useTabs": false,
-                "endOfLine": "auto",
+                "endOfLine": "auto"
             }
         ],
         "react/jsx-filename-extension": [
@@ -58,6 +58,15 @@
                 ]
             }
         ],
+		"import/extensions": [
+			"error",
+			{
+				"js": "ignorePackages",
+				"jsx": "ignorePackages",
+				"ts": "ignorePackages",
+				"tsx": "ignorePackages"
+			}
+		],
         "import/no-extraneous-dependencies": ["warn", {"devDependencies": true}],
         "no-unused-vars": "off",
         "no-console": "off",

@@ -4,7 +4,7 @@ import { selectFuseCurrentSettings } from 'app/store/fuse/settingsSlice';
 import useThemeMediaQuery from '@fuse/hooks/useThemeMediaQuery';
 import { navbarToggle, navbarToggleMobile } from 'app/store/fuse/navbarSlice';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import Icons from '../../helper/Icons';
+import Icons from '../../../@helper/Icons';
 
 function NavbarToggleButton(props) {
   const dispatch = useDispatch();

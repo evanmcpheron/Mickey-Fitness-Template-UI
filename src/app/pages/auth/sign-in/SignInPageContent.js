@@ -12,9 +12,9 @@ import _ from '@lodash';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import { proxy, s3Proxy } from 'src/app/helper/proxy';
+import { proxy, s3Proxy } from '@helper/proxy';
 import jwtService from '../../../auth/services/jwtService';
-import Icons from '../../../helper/Icons';
+import Icons from '../../../../@helper/Icons';
 
 const { faFacebookF, faGoogle, faTwitter } = Icons;
 /**

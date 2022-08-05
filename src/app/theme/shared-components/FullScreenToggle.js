@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import Icons from '../../helper/Icons';
+import Icons from '../../../@helper/Icons';
 
 const useEnhancedEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 

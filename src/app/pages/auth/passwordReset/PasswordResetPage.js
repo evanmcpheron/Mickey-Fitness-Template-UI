@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import _ from '@lodash';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import { s3Proxy } from 'src/app/helper/proxy';
+import { s3Proxy } from '@helper/proxy';
 import jwtService from '../../../auth/services/jwtService';
 
 /**

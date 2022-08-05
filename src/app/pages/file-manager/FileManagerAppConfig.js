@@ -1,6 +1,7 @@
-import { lazy } from "react";
+import { lazy } from 'react';
+import { authRoles } from '../../auth';
 
-const FileManagerApp = lazy(() => import("./FileManagerApp"));
+const FileManagerApp = lazy(() => import('./FileManagerApp'));
 
 const FileManagerAppConfig = {
   settings: {
@@ -8,13 +9,14 @@ const FileManagerAppConfig = {
       config: {},
     },
   },
+  auth: authRoles.admin,
   routes: [
     {
-      path: "/file-manager",
+      path: '/file-manager',
       element: <FileManagerApp />,
     },
     {
-      path: "/file-manager/:folderId",
+      path: '/file-manager/:folderId',
       element: <FileManagerApp />,
     },
   ],

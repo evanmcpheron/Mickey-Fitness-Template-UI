@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { IconButton, Box } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
 import { useState } from 'react';
-import { s3Proxy } from '../../helper/proxy';
+import { s3Proxy } from '../../../@helper/proxy';
 import CustomModal from './CustomModal';
 
 const CustomAvatar = styled(Box)(({ theme }) => ({

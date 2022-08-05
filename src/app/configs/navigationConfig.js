@@ -3,7 +3,7 @@ import { authRoles } from '../auth';
 import ar from './navigation-i18n/ar';
 import en from './navigation-i18n/en';
 import tr from './navigation-i18n/tr';
-import Icons from '../helper/Icons';
+import Icons from '../../@helper/Icons';
 
 i18next.addResourceBundle('en', 'navigation', en);
 i18next.addResourceBundle('tr', 'navigation', tr);

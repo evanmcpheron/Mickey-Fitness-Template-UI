@@ -1,12 +1,14 @@
 const aliases = (prefix = `src`) => ({
-  "@fuse": `${prefix}/@fuse`,
-  "@history": `${prefix}/@history`,
-  "@lodash": `${prefix}/@lodash`,
-  "app/store": `${prefix}/app/store`,
-  "app/shared-components": `${prefix}/app/shared-components`,
-  "app/configs": `${prefix}/app/configs`,
-  "app/theme-layouts": `${prefix}/app/theme-layouts`,
-  "app/AppContext": `${prefix}/app/AppContext`,
+  '@fuse': `${prefix}/@fuse`,
+  '@history': `${prefix}/@history`,
+  '@lodash': `${prefix}/@lodash`,
+  '@helper': `${prefix}/@helper`,
+  'app/store': `${prefix}/app/store`,
+  'app/auth': `${prefix}/app/auth`,
+  'app/shared-components': `${prefix}/app/shared-components`,
+  'app/configs': `${prefix}/app/configs`,
+  'app/theme-layouts': `${prefix}/app/theme-layouts`,
+  'app/AppContext': `${prefix}/app/AppContext`,
 });
 
 module.exports = aliases;

@@ -1,6 +1,5 @@
-import React from "react";
-import { authRoles } from "src/app/auth";
-import ForgotPassword from "./ForgotPassword";
+import authRoles from 'app/auth/authRoles';
+import ForgotPassword from './ForgotPassword';
 
 const ForgotPasswordConfig = {
   settings: {
@@ -8,10 +7,10 @@ const ForgotPasswordConfig = {
       config: {},
     },
   },
+  auth: authRoles.onlyGuest,
   routes: [
     {
-      path: "forgot-password",
-      auth: authRoles.onlyGuest,
+      path: 'forgot-password',
       element: <ForgotPassword />,
     },
   ],

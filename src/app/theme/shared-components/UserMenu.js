@@ -10,7 +10,7 @@ import { Link, NavLink } from 'react-router-dom';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { selectUser } from 'app/store/userSlice';
 import UserAvatar from './UserAvatar';
-import Icons from '../../helper/Icons';
+import Icons from '../../../@helper/Icons';
 
 const UserMenu = (props) => {
   const user = useSelector(selectUser);

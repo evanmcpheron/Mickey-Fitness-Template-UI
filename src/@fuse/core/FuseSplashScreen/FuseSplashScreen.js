@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import Box from '@mui/material/Box';
-import { s3Proxy } from 'src/app/helper/proxy';
+import { s3Proxy } from '@helper/proxy';
 
 function FuseSplashScreen() {
   return (

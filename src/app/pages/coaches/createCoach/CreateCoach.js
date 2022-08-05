@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import { Chip, Stack } from '@mui/material';
 import { useState } from 'react';
 import axios from 'axios';
-import { proxy } from '../../../helper/proxy';
+import { proxy } from '../../../../@helper/proxy';
 
 /**
  * Form Validation Schema
