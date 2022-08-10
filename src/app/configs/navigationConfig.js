@@ -30,7 +30,7 @@ const navigationConfig = [
     type: 'item',
     auth: authRoles.user,
     icon: Icons.faUser,
-    url: '/profile/me',
+    url: '/my-profile',
   },
   {
     id: 'file-manager-component',

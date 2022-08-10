@@ -83,7 +83,7 @@ const UserMenu = (props) => {
           </>
         ) : (
           <>
-            <MenuItem component={Link} to="/profile/me" onClick={userMenuClose} role="button">
+            <MenuItem component={Link} to="/my-profile" onClick={userMenuClose} role="button">
               <ListItemIcon className="min-w-40">
                 <FuseSvgIcon icon={Icons.faUser} />
               </ListItemIcon>

@@ -1,6 +1,7 @@
 import { lazy } from 'react';
+import { authRoles } from '../../auth';
 
-const ProfileApp = lazy(() => import('./ProfilePage'));
+const ProfileApp = lazy(() => import('./MyProfile'));
 
 const ProfileUserConfig = {
   settings: {
@@ -8,9 +9,10 @@ const ProfileUserConfig = {
       config: {},
     },
   },
+  auth: authRoles.user,
   routes: [
     {
-      path: 'profile/:userId',
+      path: 'my-profile',
       element: <ProfileApp />,
     },
   ],

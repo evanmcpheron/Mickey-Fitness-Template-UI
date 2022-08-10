@@ -15,6 +15,7 @@ import {
   faHome,
   faCloud,
   faCircleInfo,
+  faCreditCard,
 } from '@fortawesome/pro-light-svg-icons';
 
 import { faFacebookF, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -39,6 +40,7 @@ const Icons = {
   faFacebookF,
   faGoogle,
   faTwitter,
+  faCreditCard,
 };
 
 export default Icons;

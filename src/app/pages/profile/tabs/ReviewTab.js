@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import StripeComp from './stripe/StripeComp';
 
 const ReviewTab = ({ user }) => {
   const [data, setData] = useState(null);
@@ -11,7 +12,7 @@ const ReviewTab = ({ user }) => {
   //   return <FuseLoading />;
   // }
 
-  return <h2>REVIEW TAB</h2>;
+  return <StripeComp />;
 };
 
 export default ReviewTab;

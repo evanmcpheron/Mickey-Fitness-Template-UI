@@ -6,18 +6,20 @@ import Tab from '@mui/material/Tab';
 import { useState } from 'react';
 import { IconButton } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
+import { get } from 'lodash';
 import { s3Proxy } from '../../../@helper/proxy';
 import Ratings from '../../theme/shared-components/Ratings';
 import UserAvatar from '../../theme/shared-components/UserAvatar';
 import CustomModal from '../../theme/shared-components/CustomModal';
 
-const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
+const ProfileHeader = ({ user, selectedTab, setSelectedTab, store }) => {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
   };
   const handleTabChange = (event, value) => {
+    localStorage.setItem('tab', value);
     setSelectedTab(value);
   };
 
@@ -64,7 +66,7 @@ const ProfileHeader = ({ user, selectedTab, setSelectedTab }) => {
 
         <div className="flex flex-col items-center lg:items-start mt-16 lg:mt-0 lg:ml-32">
           <Typography className="text-lg font-bold leading-none">
-            {user.data.displayName}
+            {get(store, 'results.name', false) ? store.results.name : user.data.displayName}
           </Typography>
           <Typography color="text.secondary">{user.data.location}</Typography>
         </div>

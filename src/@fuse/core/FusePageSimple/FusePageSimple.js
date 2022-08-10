@@ -148,7 +148,6 @@ const Root = styled('div')(({ theme, ...props }) => ({
     width: props.rightsidebarwidth,
 
     [theme.breakpoints.up('lg')]: {
-      borderLeft: `1px solid ${theme.palette.divider}`,
       borderRight: 0,
     },
   },
