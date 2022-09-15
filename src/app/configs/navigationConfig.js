@@ -25,6 +25,14 @@ const navigationConfig = [
     url: '/coaches',
   },
   {
+    id: 'stripe-component',
+    title: 'STRIPE',
+    auth: authRoles.user,
+    type: 'item',
+    icon: Icons.faUserPlus,
+    url: 'stripe',
+  },
+  {
     id: 'profile-component',
     title: 'PROFILE',
     type: 'item',
